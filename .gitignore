@@ -1,6 +1,9 @@
 /node_modules
 /public/storage
 /storage/*.key
+/public/css
+/public/js
+/public/fonts
 /vendor
 /.idea
 Homestead.json

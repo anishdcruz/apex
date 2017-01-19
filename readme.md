@@ -26,7 +26,7 @@ Apex is work in progress and misses several key features :
     - [ ] Bill
     - [ ] Payment Made
 
-- Financial
+- Accounting
     - [ ] Statement of Account
     - and more...
 
@@ -37,8 +37,8 @@ Apex is work in progress and misses several key features :
 
 ## Contributing
 
-Feel free to contribute to this project. Join our discussion on gitter channel.
-`https://gitter.im/apex-opensource/Lobby`
-## License
+Feel free to contribute to this project. Join our discussion on <a href="https://gitter.im/apex-opensource/Lobby">Gitter</a> channel.
 
+
+## License
 The Project is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
