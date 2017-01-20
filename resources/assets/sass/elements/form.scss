@@ -15,6 +15,7 @@
 }
 
 textarea.form-control,
+.form-control,
 input.form-control {
     width: 100%;
     display: block;
@@ -37,4 +38,10 @@ textarea.form-control {
 
 .form-checkbox input {
     margin-right: 2px;
+}
+
+.form-control {
+    &[disabled] {
+        cursor: not-allowed;
+    }
 }

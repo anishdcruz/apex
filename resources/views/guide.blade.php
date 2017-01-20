@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
     </head>
     <body>
-        <div style="width: 900px; margin: 30px auto;">
+        <div style="width: 900px; margin: 30px auto;" id="root">
             <div class="panel">
                 <div class="panel-body">
                     <div class="form row">
@@ -27,10 +27,20 @@
                                 </label>
                               </div>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Type</label>
+                                <typeahead @changed="alert" :items="items" v-model="name"></typeahead>
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
                             <div class="form-group">
                                 <label>Description</label>
-                                <textarea class="form-control"></textarea>
+                                <textarea class="form-control" v-model="ok"></textarea>
                             </div>
                         </div>
                     </div>

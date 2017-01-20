@@ -1,0 +1,36 @@
+.typeahead {
+    position: relative;
+    &-list {
+        max-height: 140px;
+        overflow-y: scroll;
+    }
+    &-input {
+        cursor: pointer;
+    }
+    &-item {
+        padding: 5px;
+        cursor: pointer;
+        &:hover {
+            background: #F5FAFD;
+        }
+    }
+    &-down {
+        background: #fff;
+        position: absolute;
+        width: 100%;
+        box-shadow: 0 1px 3px rgba(0,0,0,.125);
+    }
+    &-wrap {
+        padding: 5px;
+    }
+    &-control {
+        width: 100%;
+        display: block;
+        background: $bg_grey_light;
+        border: none;
+        border-radius: 0;
+        box-shadow: inset 0 1px 1px 0 rgba(0,0,0,.1);
+        outline: none;
+        padding: 5px;
+    }
+}
