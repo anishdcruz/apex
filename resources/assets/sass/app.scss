@@ -1,5 +1,18 @@
-// Variables
-@import "variables";
+// Base
+@import "core/settings";
 
-// Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+// Vendors
+@import "node_modules/normalize.css/normalize";
+@import "node_modules/flexboxgrid/dist/flexboxgrid";
+
+// Setup
+@import "core/base";
+@import "core/typography";
+
+// Elements
+@import "elements/buttons";
+@import "elements/table";
+@import "elements/form";
+
+// Components
+@import "components/panel";

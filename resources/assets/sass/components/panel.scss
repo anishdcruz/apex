@@ -1,0 +1,29 @@
+.panel {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.115);
+    background: white;
+    margin-bottom: 15px;
+    border-radius: 2px;
+    &-heading {
+        padding:10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid $light_border;
+    }
+    &-title {
+        font-size: 18px;
+    }
+    &-controls {
+
+    }
+    &-body {
+        padding: 10px;
+    }
+    &-footer {
+        padding:10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid $light_border;
+    }
+}

@@ -1,0 +1,19 @@
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+body {
+    background: $bg;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:hover,
+a:active,
+a:focus {
+    text-decoration: none;
+}
+

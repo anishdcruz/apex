@@ -1,0 +1,40 @@
+.form {
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    small {
+        color: $color_grey_light;
+        font-weight: normal;
+    }
+    &-group,
+    &-checkbox {
+        padding: 8px 0px;
+    }
+}
+
+textarea.form-control,
+input.form-control {
+    width: 100%;
+    display: block;
+    background: $bg_grey_light;
+    border: none;
+    border-radius: 2px;
+    box-shadow: inset 0 1px 1px 0 rgba(0,0,0,.1);
+    outline: none;
+    padding: 8px;
+}
+
+textarea.form-control {
+    height: 95px;
+    resize: none;
+}
+
+.form-checkbox label {
+    font-weight: normal;
+}
+
+.form-checkbox input {
+    margin-right: 2px;
+}

@@ -1,0 +1,42 @@
+body {
+    color: $color_grey;
+    font-family: $font_family;
+    font-size: 13px;
+}
+
+h1 {
+    margin: 0;
+    small {
+        color: $color_grey_light;
+        font-weight: normal;
+    }
+}
+
+h2 {
+    font-size: 18px;
+    margin: 0;
+    small {
+        color: $color_grey_light;
+        font-weight: normal;
+    }
+}
+
+h3 {
+    font-size: 16px;
+    margin: 0;
+    small {
+        color: $color_grey_light;
+        font-weight: normal;
+    }
+}
+
+a {
+    color: $brand_success;
+    &:hover {
+        color: $brand_primary;
+    }
+}
+
+p {
+    margin: 5px 0px;
+}

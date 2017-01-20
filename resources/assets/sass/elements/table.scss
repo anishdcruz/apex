@@ -1,0 +1,24 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    thead {
+        tr {
+            th {
+                text-align: left;
+                border-bottom: 2px solid $grey_border;
+                padding: 8px;
+            }
+        }
+    }
+    tbody {
+        tr {
+            border-top: 1px solid $grey_border;
+            td {
+                padding: 8px;
+            }
+            &:nth-of-type(odd) {
+                background-color: #fcfcfc;
+            }
+        }
+    }
+}
