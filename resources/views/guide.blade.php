@@ -12,7 +12,6 @@
 
             <div class="panel">
                 <div class="panel-body">
-                    <product></product>
                     <table class="form_table">
                         <thead>
                             <tr>
@@ -50,7 +49,7 @@
                                 <tr>
                                     <td colspan="2">
                                         <button class="btn">Add Line</button>
-                                        <button class="btn btn-secondary">Search</button>
+                                        <product></product>
                                     </td>
                                     <td colspan="2" class="form_table-title">
                                         <span>Sub Total</span>

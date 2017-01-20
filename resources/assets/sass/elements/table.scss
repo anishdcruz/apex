@@ -6,7 +6,7 @@
             th {
                 text-align: left;
                 border-bottom: 2px solid $grey_border;
-                padding: 8px;
+                padding: 8px!important;
             }
         }
     }
@@ -14,7 +14,7 @@
         tr {
             border-top: 1px solid $grey_border;
             td {
-                padding: 8px;
+                padding: 8px!important;
             }
             &:nth-of-type(odd) {
                 background-color: #fcfcfc;
