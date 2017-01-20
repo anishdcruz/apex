@@ -1,6 +1,10 @@
 <template>
     <div class="typeahead">
-        <span class="typeahead-input form-control" @click="open" v-text="selectedValue"></span>
+        <div @click="open" class="typeahead-input">
+            <span class="form-control" v-if="value" v-text="showValue"></span>
+            <span class="form-control" v-else>Select</span>
+            <i class="fa fa-angle-down"></i>
+        </div>
         <inner v-if="show" @close="close">
             <div class="typeahead-down">
                 <div class="typeahead-wrap">
@@ -22,15 +26,13 @@
         data() {
             return {
                 show: false,
-                search: '',
-                selectedValue: 'Select'
+                search: ''
             }
         },
         methods: {
             updateValue(item) {
-                this.selectedValue = item.text
-                this.$emit('input', this.selectedValue)
-                this.$emit('changed', item)
+                this.$emit('input', (item.id))
+                this.$emit('changed', {target: {value: item}})
                 this.close()
             },
             open() {
@@ -41,6 +43,14 @@
             }
         },
         computed: {
+            showValue() {
+                var vm = this
+                var found = this.items.find(function(item) {
+                  return item.id === vm.value
+                })
+
+                return found.text
+            },
             filtered() {
               var self = this
               return this.items.filter(function (result) {

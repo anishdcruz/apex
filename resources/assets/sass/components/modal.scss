@@ -1,14 +1,26 @@
-.panel {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.115);
-    background: white;
-    margin-bottom: 15px;
-    border-radius: 2px;
+.modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 12;
+    background-color: rgba(0,0,0,0.4);
     &-heading {
         padding: 10px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         border-bottom: 1px solid $light_border;
+    }
+    &-search {
+        width: 300px;
+    }
+    &-content {
+        width: 80%;
+        margin: 30px auto;
+        background: white;
+        border-radius: 2px;
     }
     &-title {
         font-size: 18px;

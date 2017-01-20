@@ -40,3 +40,24 @@ a {
 p {
     margin: 5px 0px;
 }
+
+.left {
+    text-align: left;
+    input {
+        text-align: left;
+    }
+}
+
+.center {
+    text-align: center;
+    input {
+        text-align: center;
+    }
+}
+
+.right {
+    text-align: right;
+    input {
+        text-align: right;
+    }
+}
