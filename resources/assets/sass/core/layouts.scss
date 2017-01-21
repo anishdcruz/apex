@@ -1,0 +1,28 @@
+.root {
+    display: flex;
+    height: 100%;
+}
+
+.sidebar {
+    flex: 2;
+    background: #2D393C;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.content {
+    flex: 10;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.navbar {
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    padding: 8px;
+    height: 50px;
+}
+
+.view {
+    padding: 10px;
+}

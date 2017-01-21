@@ -1,0 +1,11 @@
+.pagination {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &-status {
+        padding-right: 10px;
+        color: $color_grey_light;
+        font-size: 12px;
+    }
+}

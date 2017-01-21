@@ -8,6 +8,7 @@
 // Setup
 @import "core/base";
 @import "core/typography";
+@import "core/layouts";
 
 // Elements
 @import "elements/buttons";
@@ -19,3 +20,4 @@
 @import "components/panel";
 @import "components/typeahead";
 @import "components/modal";
+@import "components/pagination";

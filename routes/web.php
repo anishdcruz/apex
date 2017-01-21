@@ -1,5 +1,9 @@
 <?php
 
 Route::get('/', function () {
-    return view('guide');
+    return view('app');
+});
+
+Route::group(['prefix' => 'api/'], function() {
+    Route::resource('clients', 'ClientController');
 });

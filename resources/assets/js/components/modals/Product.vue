@@ -32,7 +32,13 @@
                     </table>
                 </div>
                 <div class="modal-footer modal-footer_center">
-                    <span>Showing 10 of 100</span>
+                    <div class="pagination">
+                        <div class="pagination-controls">
+                            <button class="btn">&laquo;</button>
+                            <button class="btn">&raquo;</button>
+                        </div>
+                        <span class="pagination-status">Showing 10 of 100</span>
+                    </div>
                     <div class="modal-controls">
                         <button class="btn btn-primary">Add to Line</button>
                         <button class="btn" @click="toggle">Close</button>
@@ -46,7 +52,7 @@
     export default {
         data() {
             return {
-                show: false
+                show: true
             }
         },
         methods: {

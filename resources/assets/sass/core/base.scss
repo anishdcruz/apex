@@ -1,9 +1,13 @@
 *, :after, :before {
     box-sizing: border-box;
 }
+html {
+    height: 100%;
+}
 
 body {
     background: $bg;
+    height: 100%;
 }
 
 a {
@@ -16,4 +20,3 @@ a:active,
 a:focus {
     text-decoration: none;
 }
-
