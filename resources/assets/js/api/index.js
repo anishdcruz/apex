@@ -12,6 +12,16 @@ export function getByIndex(route, resource, success, error) {
         })
 }
 
+export function getById(route, path, success, error) {
+    axios.get(`/api/${path}`)
+        .then(function(response) {
+            success(response.data)
+        })
+        .catch(function(error) {
+            error(error)
+        })
+}
+
 function params(route) {
     const query = {
         page: route.query.page || 1,

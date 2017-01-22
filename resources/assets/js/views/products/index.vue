@@ -1,16 +1,17 @@
 <template>
     <div class="view">
         <index :thead="thead" :resource="resource" :filter="filter">
-            <span slot="title">Clients</span>
-            <router-link to="/clients/create" class="btn btn-primary" slot="create">Create Client</router-link>
+            <span slot="title">Products</span>
+            <router-link to="/clients" class="btn btn-primary" slot="create">Create Product</router-link>
 
             <template scope="props">
-                <tr @click="move(props.item)">
+                <tr>
                     <td>{{props.item.id}}</td>
-                    <td>{{props.item.person}}</td>
-                    <td>{{props.item.company}}</td>
-                    <td>{{props.item.email}}</td>
-                    <td>{{props.item.telephone}}</td>
+                    <td>{{props.item.item_code}}</td>
+                    <td>{{props.item.description}}</td>
+                    <td>{{props.item.unit_price}}</td>
+                    <td>{{props.item.vendor_ref}}</td>
+                    <td>{{props.item.vendor_price}}</td>
                     <td>{{props.item.created_at}}</td>
                 </tr>
             </template>
@@ -23,19 +24,19 @@
         name: 'ClientIndex',
         data() {
             return {
-                resource: 'clients',
+                resource: 'products',
                 thead: [
                     { title: 'ID', key: 'id', sort: true },
-                    { title: 'Person', key: 'person', sort: true },
-                    { title: 'Company', key: 'company', sort: true },
-                    { title: 'Email Address', key: 'email', sort: true },
-                    { title: 'Phone Number', key: 'telephone', sort: true },
+                    { title: 'Item Code', key: 'item_code', sort: true },
+                    { title: 'Description', key: 'description', sort: false },
+                    { title: 'Unit Price', key: 'unit_price', sort: true },
+                    { title: 'Vendor Ref', key: 'vendor_ref', sort: true },
+                    { title: 'Vendor Price', key: 'vendor_price', sort: true },
                     { title: 'Created At', key: 'created_at', sort: true }
                 ],
                 filter: [
-                    'id', 'person', 'company', 'email', 'telephone',
-                    'billing_address', 'shipping_address',
-                    'created_at'
+                    'id', 'description', 'unit_price', 'vendor_price',
+                    'vendor_ref', 'created_at'
                 ]
             }
         },
@@ -46,9 +47,6 @@
             this.fetchData()
         },
         methods: {
-            move(item) {
-                this.$router.push(`/clients/${item.id}`)
-            },
             fetchData() {
                 this.$store.dispatch('fetchIndex', {
                     resource: this.resource

@@ -2,10 +2,10 @@
     <div class="panel">
         <div class="panel-heading">
             <p class="panel-title">
-                <span>{{title}}</span>
+                <slot name="title"></slot>
             </p>
             <div class="panel-controls">
-                <button class="btn btn-primary">Create Client</button>
+                <slot name="create"></slot>
                 <button class="btn" @click="toggleFilter">
                     <i class="fa fa-filter"></i>
                 </button>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </form>
-            <table class="table">
+            <table class="table table-link">
                 <thead>
                     <tr>
                         <th v-for="column in thead">
@@ -67,7 +67,7 @@
 </template>
 <script type="text/javascript">
     export default {
-        props: ['thead', 'resource', 'title', 'filter'],
+        props: ['thead', 'resource', 'filter'],
         data() {
             return {
                 showFilter: false,
@@ -108,6 +108,9 @@
                 this.$router.push(this.link())
             },
             sort(column) {
+                if(!column.sort) {
+                    return
+                }
                 if(this.query.column === column.key) {
                     if(this.query.direction === 'desc') {
                         this.query.direction = 'asc'

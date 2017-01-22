@@ -13,3 +13,19 @@
 .filter {
     padding-bottom: 10px;
 }
+
+.profile {
+}
+.profile-item {
+    display: flex;
+    margin-bottom: 15px;
+    margin-top: 0px;
+    i {
+        flex: 1;
+        color: $color_grey_light;
+    }
+
+    span, pre {
+        flex: 9;
+    }
+}

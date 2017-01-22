@@ -2,12 +2,14 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import * as types from './types'
-import { getByIndex } from '../api'
+import { getByIndex, getById } from '../api'
 
 Vue.use(Vuex)
 
 const state = {
-    model: {},
+    model: {
+        currency: {}
+    },
     loading: false,
     errors: [],
     form: {}
@@ -17,6 +19,15 @@ const actions = {
     fetchIndex({commit, state}, payload) {
         commit(types.LOADING_BEGIN)
         getByIndex(state.route, payload.resource, function(data) {
+            commit(types.SET_MODEL, data)
+            commit(types.LOADING_END)
+        }, function(errror) {
+
+        })
+    },
+    fetchById({commit, state}, payload) {
+        commit(types.LOADING_BEGIN)
+        getById(state.route, payload.path, function(data) {
             commit(types.SET_MODEL, data)
             commit(types.LOADING_END)
         }, function(errror) {

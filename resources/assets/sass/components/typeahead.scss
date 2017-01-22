@@ -6,6 +6,9 @@
     }
     &-input {
         cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
     &-item {
         padding: 5px;

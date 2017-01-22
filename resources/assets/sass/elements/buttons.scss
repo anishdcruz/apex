@@ -27,10 +27,16 @@ a.btn {
     display: inline-block;
     text-decoration: none;
     line-height: 1.15;
+    color: $color_grey;
     &:hover, &:active {
         text-decoration: none;
-        color: inherit;
     }
+}
+
+a.btn-primary,
+a.btn-secondary,
+a.btn-danger {
+    color: #fff;
 }
 .btn-block {
     display: block;

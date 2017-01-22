@@ -14,4 +14,15 @@ class ClientController extends Controller
                 'model' => Client::paginationOrderFilter()
             ]);
     }
+
+    public function show($id)
+    {
+        $client = Client::with(['currency'])
+            ->findOrFail($id);
+
+        return response()
+            ->json([
+                'model' => $client
+            ]);
+    }
 }

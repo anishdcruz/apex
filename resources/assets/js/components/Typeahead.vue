@@ -1,8 +1,8 @@
 <template>
     <div class="typeahead">
-        <div @click="open" class="typeahead-input">
-            <span class="form-control" v-if="value" v-text="showValue"></span>
-            <span class="form-control" v-else>Select</span>
+        <div @click="open" class="typeahead-input form-control">
+            <span v-if="value" v-text="showValue"></span>
+            <span v-else>Select</span>
             <i class="fa fa-angle-down"></i>
         </div>
         <inner v-if="show" @close="close">

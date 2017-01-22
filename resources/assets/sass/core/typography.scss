@@ -61,3 +61,20 @@ p {
         text-align: right;
     }
 }
+
+pre {
+    color: $color_grey;
+    font-family: $font_family;
+    font-size: 13px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    vertical-align: top;
+    display: inline-block;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}

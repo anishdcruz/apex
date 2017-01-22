@@ -6,4 +6,5 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'api/'], function() {
     Route::resource('clients', 'ClientController');
+    Route::resource('products', 'ProductController');
 });
