@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export function getByIndex(route, resource, success, error) {
     axios.get(`/api/${resource}`, {
-        params: toURL(route)
+        params: params(route)
     })
         .then(function(response) {
             success(response.data)
@@ -12,10 +12,10 @@ export function getByIndex(route, resource, success, error) {
         })
 }
 
-function toURL(route) {
+function params(route) {
     const query = {
-        page: 1,
-        per_page: route.query.per_page || 10,
+        page: route.query.page || 1,
+        per_page: route.query.per_page || 13,
         column: route.query.column || 'id',
         direction: route.query.direction || 'desc',
         search_column: route.query.search_column || 'id',

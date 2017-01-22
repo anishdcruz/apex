@@ -4,11 +4,13 @@
 // Vendors
 @import "node_modules/normalize.css/normalize";
 @import "node_modules/flexboxgrid/dist/flexboxgrid";
+@import "node_modules/font-awesome/css/font-awesome";
 
 // Setup
 @import "core/base";
 @import "core/typography";
 @import "core/layouts";
+@import "core/misc";
 
 // Elements
 @import "elements/buttons";

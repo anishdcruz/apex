@@ -1,6 +1,6 @@
 <template>
     <div class="view">
-        <index :thead="thead">
+        <index :thead="thead" :resource="resource" :title="title" :filter="filter">
             <template scope="props">
                 <tr>
                     <td>{{props.item.id}}</td>
@@ -20,6 +20,8 @@
         name: 'ClientIndex',
         data() {
             return {
+                resource: 'clients',
+                title: 'Clients',
                 thead: [
                     { title: 'ID', key: 'id', sort: true },
                     { title: 'Person', key: 'person', sort: true },
@@ -27,6 +29,11 @@
                     { title: 'Email Address', key: 'email', sort: true },
                     { title: 'Phone Number', key: 'telephone', sort: true },
                     { title: 'Created At', key: 'created_at', sort: true }
+                ],
+                filter: [
+                    'id', 'person', 'company', 'email', 'telephone',
+                    'billing_address', 'shipping_address',
+                    'created_at'
                 ]
             }
         },
@@ -39,7 +46,7 @@
         methods: {
             fetchData() {
                 this.$store.dispatch('fetchIndex', {
-                    resource: 'clients'
+                    resource: this.resource
                 })
             }
         },

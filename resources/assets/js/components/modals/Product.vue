@@ -37,7 +37,7 @@
                             <button class="btn">&laquo;</button>
                             <button class="btn">&raquo;</button>
                         </div>
-                        <span class="pagination-status">Showing 10 of 100</span>
+                        <span class="pagination-status">Showing</span>
                     </div>
                     <div class="modal-controls">
                         <button class="btn btn-primary">Add to Line</button>

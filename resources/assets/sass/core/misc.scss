@@ -1,0 +1,15 @@
+.sortable {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    &-direction {
+        color: $color_grey_light;
+        font-size: 11px;
+        line-height: 11px;
+    }
+}
+
+.filter {
+    padding-bottom: 10px;
+}
