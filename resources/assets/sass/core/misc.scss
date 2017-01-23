@@ -78,3 +78,18 @@
         font-weight: bold;
     }
 }
+
+.document {
+    padding: 50px 75px;
+    &-terms {
+        margin-top: 15px;
+        margin-bottom: 0;
+        ul {
+            padding-left: 17px;
+        }
+        pre {
+            margin: 0 0 5px 0;
+            font-size: 12px;
+        }
+    }
+}

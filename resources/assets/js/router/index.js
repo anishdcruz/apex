@@ -16,6 +16,9 @@ const router = new VueRouter({
         { path: '/products/:id', component: require('../views/products/show.vue')},
 
         { path: '/quotations', component: require('../views/quotations/index.vue')},
+        { path: '/quotations/create', component: require('../views/quotations/form.vue')},
+        { path: '/quotations/:id/edit', component: require('../views/quotations/form.vue'), meta: {mode: 'edit'}},
+        { path: '/quotations/:id', component: require('../views/quotations/show.vue')},
     ]
 })
 

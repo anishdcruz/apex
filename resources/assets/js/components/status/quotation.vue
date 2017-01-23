@@ -1,25 +1,14 @@
 <template>
-    <span :class="['status', type.color]">
-        {{type.title}}
+    <span>
+        <span v-if="id === 1" class="status status-grey">Draft</span>
+        <span v-else-if="id === 2" class="status status-light_blue">Sent</span>
+        <span v-else-if="id === 3" class="status status-green">Accepted</span>
+        <span v-else-if="id === 4" class="status status-red">Declined</span>
+        <span v-else-if="id === 5" class="status status-blue">Invoiced</span>
     </span>
 </template>
 <script type="text/javascript">
     export default {
-        props: ['id'],
-        computed: {
-            type() {
-                const types = [
-                    { id: 1, color: 'status-grey', title: 'Draft'},
-                    { id: 2, color: 'status-light_blue', title: 'Sent'},
-                    { id: 3, color: 'status-green', title: 'Accepted'},
-                    { id: 4, color: 'status-red', title: 'Declined'},
-                    { id: 5, color: 'status-blue', title: 'Invoiced'}
-                ]
-                var vm = this
-                return types.find(function(item) {
-                    return item.id === vm.id
-                })
-            }
-        }
+        props: ['id']
     }
 </script>

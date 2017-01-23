@@ -11,7 +11,9 @@ const state = {
     loading: false,
     processing: false,
     errors: {},
-    form: {},
+    form: {
+        items: []
+    },
     option: {}
 }
 
@@ -79,6 +81,12 @@ const getters = {
     },
     errors(state) {
         return state.errors
+    },
+    client(state) {
+        if(state.model.client) {
+            return state.model.client
+        }
+        return {}
     }
 }
 
@@ -86,7 +94,9 @@ const mutations = {
     [types.CLEAN_UP] (state, payload) {
         state.model = {}
         state.errors = {}
-        state.form = {}
+        state.form = {
+            items: []
+        }
         state.option = {}
     },
     [types.SET_FORM_ERROR] (state, payload) {

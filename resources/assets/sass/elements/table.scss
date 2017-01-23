@@ -30,3 +30,41 @@
         }
     }
 }
+
+.table-summary {
+    width: 100%;
+    border-collapse: collapse;
+    tbody {
+        tr {
+            td {
+                font-weight: bold;
+                padding: 0 0 10px 0;
+                &:nth-child(2n) {
+                    font-weight: normal;
+                    text-align: right;
+                }
+            }
+        }
+    }
+}
+
+.table-dark {
+    margin-top: 15px;
+    thead {
+        th {
+            background: $color_grey;
+            border-bottom: 2px solid #333!important;
+            color: #fff;
+        }
+    }
+    tfoot {
+        border-top: 1px solid #e0e0e0;
+        tr {
+            border-bottom: 1px solid #e0e0e0;
+            td {
+                background: #f5f4f3;
+                padding: 8px!important;
+            }
+        }
+    }
+}

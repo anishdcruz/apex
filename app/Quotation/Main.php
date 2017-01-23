@@ -41,11 +41,11 @@ class Main extends Model
 
     public function items()
     {
-        return $this->hasMany(Item::class);
+        return $this->hasMany(Item::class, 'quotation_id', 'id');
     }
 
     public function terms()
     {
-        return $this->hasMany(Term::class);
+        return $this->hasMany(Term::class, 'quotation_id', 'id');
     }
 }

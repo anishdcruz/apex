@@ -1,12 +1,17 @@
 .status {
     // background: #999;
-    display: block;
+    display: inline-block;
     text-align: center;
     font-size: 9px;
     text-transform: uppercase;
     padding: 2px 5px;
     border-radius: 2px;
     color: #fff;
+    &-lg {
+        span {
+            font-size: 14px;
+        }
+    }
     &-grey {
         background: $status_grey;
     }

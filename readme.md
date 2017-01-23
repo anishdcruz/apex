@@ -2,19 +2,23 @@
 
 Apex is a self hosted sales, purchase, inventory and accounting solution for small businesses.
 
+## Demo
+
+![alt tag](https://github.com/anishdcruz/apex/raw/master/demo/s1.png)
+
 ## Work in progress
 
 Apex is work in progress and misses several key features :
 
 - Sales
-    - [ ] Client
+    - [x] Client
     - [ ] Quotation
     - [ ] Sales Order
     - [ ] Invoice
     - [ ] Payment Received
 
 - Inventory
-    - [ ] Items
+    - [x] Product
     - [ ] Receive
     - [ ] Delivery Note
     - [ ] Journal
