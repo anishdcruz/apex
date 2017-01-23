@@ -14,11 +14,8 @@
                         <thead>
                             <tr>
                                 <th><input type="checkbox" disabled></th>
-                                <th>Item Code</th>
-                                <th>Description</th>
-                                <th>Unit Price</th>
-                                <th>Vendor Ref</th>
-                                <th>Vendor Price</th>
+                                <th>Terms and Conditions</th>
+                                <th>Created At</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -26,17 +23,8 @@
                                 <td>
                                     <input type="checkbox" v-model="item.check">
                                 </td>
-                                <td>{{item.item_code}}</td>
                                 <td>{{item.description}}</td>
-                                <td>
-                                    {{item.unit_price}}
-                                    <small>{{item.currency.code}}</small>
-                                </td>
-                                <td>{{item.vendor_ref}}</td>
-                                <td>
-                                    {{item.vendor_price}}
-                                    <small>{{item.currency.code}}</small>
-                                </td>
+                                <td>{{item.created_at}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -133,7 +121,7 @@
             },
             fetchData() {
                 var vm = this
-                axios.get('/api/products/search', {
+                axios.get('/api/terms/search', {
                     params: this.query
                 })
                     .then(function(response) {

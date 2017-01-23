@@ -15,7 +15,7 @@ class Item extends Model
 
     public $timestamps = false;
 
-    public static function initalize()
+    public static function initialize()
     {
         return [
             'item_code' => '', 'description' => '',

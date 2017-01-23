@@ -17,6 +17,25 @@ class ProductController extends Controller
             ]);
     }
 
+    public function search(Request $request)
+    {
+        $q = $request->get('q', '');
+
+        $products = Product::with(['currency'])
+            ->orderBy('created_at', 'desc')
+            ->where(function($query) use ($q) {
+                $query->where('item_code', 'like', '%.'.$q.'%')
+                    ->orWhere('description', 'like', '%'.$q.'%')
+                    ->orWhere('vendor_ref', 'like', '%'.$q.'%');
+            })
+            ->paginate(13);
+
+        return response()
+            ->json([
+                'model' => $products
+            ]);
+    }
+
     public function create()
     {
         return response()

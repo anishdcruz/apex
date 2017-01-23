@@ -93,7 +93,7 @@
                         <tr>
                             <td colspan="2">
                                 <button class="btn" @click="addLine('items')">Add Line</button>
-                                <product></product>
+                                <product @add="addItems"></product>
                             </td>
                             <td colspan="2" class="form_table-title">
                                 <span>Sub Total</span>
@@ -147,7 +147,7 @@
                         <td>
                             <div class="form_table-btns">
                                 <button class="btn" @click="addLine('terms')">Add Line</button>
-                                <button class="btn btn-secondary">Search</button>
+                                <term @add="addTerms"></term>
                             </div>
                         </td>
                     </tr>
@@ -164,7 +164,9 @@
     </div>
 </template>
 <script type="text/javascript">
+    import Product from '../../components/modals/Product.vue'
     import Typeahead from '../../components/Typeahead.vue'
+    import Term from '../../components/modals/Term.vue'
     export default {
         data() {
             return {
@@ -209,6 +211,25 @@
             '$route': 'fetchData'
         },
         methods: {
+            addItems(event) {
+                var vm = this
+                event.target.value.forEach(function(x) {
+                    vm.form.items.push({
+                        item_code: x.item_code,
+                        description: x.description,
+                        unit_price: x.unit_price,
+                        qty: 1
+                    })
+                })
+            },
+            addTerms(event) {
+                var vm = this
+                event.target.value.forEach(function(x) {
+                    vm.form.terms.push({
+                        description: x.description
+                    })
+                })
+            },
             addLine(type) {
                 if(type === 'items') {
                     this.form.items.push({
@@ -248,7 +269,9 @@
             }
         },
         components: {
-            Typeahead
+            Typeahead,
+            Product,
+            Term
         }
     }
 </script>

@@ -15,7 +15,7 @@ class Main extends Model
 
     protected $fillable = [
         'title', 'client_id', 'currency_id', 'date', 'expiry_date',
-        'status_id', 'discount'
+        'status_id', 'discount', 'sub_total', 'total'
     ];
 
     protected $filterFields = [
@@ -47,5 +47,20 @@ class Main extends Model
     public function terms()
     {
         return $this->hasMany(Term::class, 'quotation_id', 'id');
+    }
+
+    public static function initialize()
+    {
+        return [
+            'client_id' => null , 'title' => 'Quotation for ',
+            'number' => counter('quotation'), 'date' => date('Y-m-d'), 'expiry_date' => '',
+            'currency_id' => 1, 'discount' => 0,
+            'items' => [
+                Item::initialize()
+            ],
+            'terms' => [
+                Term::initialize()
+            ]
+        ];
     }
 }

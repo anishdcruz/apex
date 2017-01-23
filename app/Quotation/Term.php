@@ -14,7 +14,7 @@ class Term extends Model
 
     public $timestamps = false;
 
-    public static function initalize()
+    public static function initialize()
     {
         return [
             'description' => ''

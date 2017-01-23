@@ -10,5 +10,10 @@ Route::group(['prefix' => 'api/'], function() {
     Route::resource('quotations', 'QuotationController');
 
     // Inventory
+    Route::get('products/search', 'ProductController@search');
     Route::resource('products', 'ProductController');
+
+    // Others
+    Route::get('terms/search', 'TermController@search');
+    Route::resource('terms', 'TermController');
 });
