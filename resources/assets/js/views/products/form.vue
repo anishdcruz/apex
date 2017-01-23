@@ -8,7 +8,13 @@
                 <div class="row form">
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Item Code</label>
+                            <label>
+                                Item Code
+                                <small>
+                                    <i class="info">*</i>
+                                    Auto Generated
+                                </small>
+                            </label>
                             <input type="text" class="form-control" v-model="form.item_code" disabled>
                         </div>
                         <div class="form-group">

@@ -30,7 +30,7 @@
                         title: 'Sales',
                         links: [
                             { title: 'Clients', path: '/clients', icon: 'fa-address-book' },
-                            { title: 'Quotation', path: '/quotation', icon: 'fa-file-text-o' },
+                            { title: 'Quotation', path: '/quotations', icon: 'fa-file-text-o' },
                             { title: 'Sales Order', path: '/sales-order', icon: 'fa-file-text-o' },
                             { title: 'Invoice', path: '/invoice', icon: 'fa-file-text-o' },
                             { title: 'Payment Received', path: '/payment-received', icon: 'fa-money' }
