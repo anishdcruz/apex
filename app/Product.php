@@ -27,7 +27,7 @@ class Product extends Model
     public static function initialize()
     {
         return [
-            'item_code' => 'auto_gen',
+            'item_code' => counter('product'),
             'description' => '',
             'unit_price' => 0,
             'vendor_price' => 0,

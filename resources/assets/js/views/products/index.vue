@@ -2,10 +2,10 @@
     <div class="view">
         <index :thead="thead" :resource="resource" :filter="filter">
             <span slot="title">Products</span>
-            <router-link to="/clients" class="btn btn-primary" slot="create">Create Product</router-link>
+            <router-link to="/products/create" class="btn btn-primary" slot="create">Create Product</router-link>
 
             <template scope="props">
-                <tr>
+                <tr @click="move(props.item)">
                     <td>{{props.item.id}}</td>
                     <td>{{props.item.item_code}}</td>
                     <td>{{props.item.description}}</td>
@@ -47,6 +47,9 @@
             this.fetchData()
         },
         methods: {
+            move(item) {
+                this.$router.push(`/products/${item.id}`)
+            },
             fetchData() {
                 this.$store.dispatch('fetchIndex', {
                     resource: this.resource

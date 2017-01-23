@@ -29,3 +29,52 @@
         flex: 9;
     }
 }
+
+.sidebar {
+    background: #2D393C;
+    /*background: pink;*/
+    padding-left: 15px;
+    &-group {
+        /*background: red;*/
+        padding-top: 15px;
+    }
+    &-title {
+        display: block;
+        color: #fafafa;
+        margin-bottom: 8px;
+    }
+    &-links {
+        margin: 0;
+        padding: 0;
+    }
+    &-item {
+        /*background: blue;*/
+        display: block;
+    }
+    &-link {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        /*background: yellow;*/
+        padding: 5px;
+        color: #fafafa;
+        &:hover {
+            color: #fafafa;
+        }
+    }
+    &-icon {
+        flex: 1;
+        color: #fafafa;
+    }
+    &-text {
+        flex: 9;
+    }
+}
+
+.show-item {
+    margin-bottom: 10px;
+    label {
+        display: block;
+        font-weight: bold;
+    }
+}
