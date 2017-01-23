@@ -210,18 +210,23 @@ class QuotationController extends Controller
             ]);
     }
 
-    public function pdf($id)
+    public function pdf($id, Request $request)
     {
         $data = Main::with([
             'currency', 'client', 'items', 'terms'
             ])
             ->findOrFail($id);
 
-        // return view('pdf.quotation', ['model' => $data]);
 
         $pdf = PDF::setOption('header-html', base_path('resources/views/static/header.html'))
             ->setOption('footer-html', base_path('resources/views/static/footer.html'))
             ->loadView('pdf.quotation', ['model' => $data]);
-        return $pdf->inline();
+
+        $filename = "{$data->number}.pdf";
+
+        if($request->get('opt') === 'download') {
+            return $pdf->download($filename);
+        }
+        return $pdf->inline($filename);
     }
 }

@@ -80,7 +80,10 @@
 }
 
 .document {
-    padding: 50px 75px;
+    border: 1px solid lighten($color_grey_light, 40%);
+    margin: 50px 85px;
+    border-radius: 3px;
+    padding: 25px;
     &-terms {
         margin-top: 25px;
         margin-bottom: 0;

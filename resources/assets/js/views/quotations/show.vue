@@ -4,15 +4,17 @@
             <div class="panel-heading">
                 <p class="panel-title">
                     <status :id="model.status_id" class="status-lg"></status>
-                    <span>{{model.title}}</span>
                 </p>
                 <div class="panel-controls">
                     <div class="btn-group">
-                        <a target="_blank" :href="'/api/quotations/' + model.id + '/pdf'" class="btn">PDF</a>
+                        <button @click="$router.back()" class="btn">Back</button>
+                        <router-link :to="editLink" class="btn">Clone</router-link>
+                        <router-link :to="editLink" class="btn btn-danger">Email</router-link>
                     </div>
                     <div class="btn-group">
-                        <button @click="$router.back()" class="btn">Back</button>
-                        <router-link :to="editLink" class="btn btn-secondary">Edit</router-link>
+                        <a target="_blank" :href="'/api/quotations/' + model.id + '/pdf'" class="btn">PDF</a>
+                        <a target="_blank" :href="'/api/quotations/' + model.id + '/pdf?opt=download'" class="btn">Download</a>
+                        <router-link :to="editLink" class="btn">Edit</router-link>
                     </div>
                     <button class="btn btn-danger">Delete</button>
                 </div>
@@ -20,11 +22,15 @@
             <div class="panel-body">
                 <div class="document">
                     <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-8">
+                            <p>
+                                <strong>Title: </strong>
+                                <span>{{model.title}}</span>
+                            </p>
                             <strong>To:</strong><br>
                             <pre>{{client.person}},<br>{{client.company}},<br>{{client.billing_address}}</pre>
                         </div>
-                        <div class="col-sm-3 col-sm-offset-5">
+                        <div class="col-sm-3 col-sm-offset-1">
                             <table class="table-summary">
                                 <tbody>
                                     <tr>
