@@ -7,6 +7,7 @@ Route::get('/', function () {
 Route::group(['prefix' => 'api/'], function() {
     // Sales
     Route::resource('clients', 'ClientController');
+    Route::get('quotations/{quotation}/pdf', 'QuotationController@pdf');
     Route::resource('quotations', 'QuotationController');
 
     // Inventory
@@ -16,4 +17,6 @@ Route::group(['prefix' => 'api/'], function() {
     // Others
     Route::get('terms/search', 'TermController@search');
     Route::resource('terms', 'TermController');
+
+    Route::get('static/header', 'StaticController@header');
 });

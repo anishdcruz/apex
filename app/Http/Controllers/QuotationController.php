@@ -9,6 +9,7 @@ use App\Quotation\ {
     Term
 };
 use App\Counter;
+use PDF;
 use DB;
 
 class QuotationController extends Controller
@@ -207,5 +208,20 @@ class QuotationController extends Controller
             ->json([
                 'saved' => true
             ]);
+    }
+
+    public function pdf($id)
+    {
+        $data = Main::with([
+            'currency', 'client', 'items', 'terms'
+            ])
+            ->findOrFail($id);
+
+        // return view('pdf.quotation', ['model' => $data]);
+
+        $pdf = PDF::setOption('header-html', base_path('resources/views/static/header.html'))
+            ->setOption('footer-html', base_path('resources/views/static/footer.html'))
+            ->loadView('pdf.quotation', ['model' => $data]);
+        return $pdf->inline();
     }
 }

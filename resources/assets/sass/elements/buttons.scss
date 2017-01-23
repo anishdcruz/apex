@@ -59,3 +59,8 @@ a.btn-danger {
     color: #fff;
     box-shadow: 0 1px darken($brand_danger, 13%);
 }
+
+.btn-group {
+    display: inline-block;
+    padding-right: 5px;
+}

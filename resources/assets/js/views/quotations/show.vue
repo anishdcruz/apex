@@ -7,8 +7,13 @@
                     <span>{{model.title}}</span>
                 </p>
                 <div class="panel-controls">
-                    <button @click="$router.back()" class="btn">Back</button>
-                    <router-link :to="editLink" class="btn btn-secondary">Edit</router-link>
+                    <div class="btn-group">
+                        <a target="_blank" :href="'/api/quotations/' + model.id + '/pdf'" class="btn">PDF</a>
+                    </div>
+                    <div class="btn-group">
+                        <button @click="$router.back()" class="btn">Back</button>
+                        <router-link :to="editLink" class="btn btn-secondary">Edit</router-link>
+                    </div>
                     <button class="btn btn-danger">Delete</button>
                 </div>
             </div>
