@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export function getByIndex(route, resource, success, error) {
+export function getByIndex(route, resource, success, fail) {
     axios.get(`/api/${resource}`, {
         params: params(route)
     })
@@ -8,17 +8,27 @@ export function getByIndex(route, resource, success, error) {
             success(response.data)
         })
         .catch(function(error) {
-            error(error)
+            fail(error)
         })
 }
 
-export function getById(route, path, success, error) {
+export function getByPath(route, path, success, fail) {
     axios.get(`/api/${path}`)
         .then(function(response) {
             success(response.data)
         })
         .catch(function(error) {
-            error(error)
+            fail(error)
+        })
+}
+
+export function store(payload, success, fail) {
+    axios[payload.method](`/api/${payload.store}`, payload.form)
+        .then(function(response) {
+            success(response.data)
+        })
+        .catch(function(error) {
+            fail(error.response)
         })
 }
 

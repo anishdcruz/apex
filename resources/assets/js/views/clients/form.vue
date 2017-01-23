@@ -9,50 +9,50 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label>Person</label>
-                            <input type="text" class="form-control">
-                            <small class="e-text"></small>
+                            <input type="text" class="form-control" v-model="form.person">
+                            <small class="e-text" v-if="errors.person">{{errors.person[0]}}</small>
                         </div>
                         <div class="form-group">
                             <label>Company</label>
-                            <input type="text" class="form-control">
-                            <small class="e-text"></small>
+                            <input type="text" class="form-control" v-model="form.company">
+                            <small class="e-text" v-if="errors.company">{{errors.company[0]}}</small>
                         </div>
                         <div class="form-group">
                             <label>Email Address</label>
-                            <input type="text" class="form-control">
-                            <small class="e-text"></small>
+                            <input type="text" class="form-control" v-model="form.email">
+                            <small class="e-text" v-if="errors.email">{{errors.email[0]}}</small>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label>Telephone</label>
-                            <input type="text" class="form-control">
-                            <small class="e-text"></small>
+                            <input type="text" class="form-control" v-model="form.telephone">
+                            <small class="e-text" v-if="errors.telephone">{{errors.telephone[0]}}</small>
                         </div>
                         <div class="form-group">
                             <label>Billing Address</label>
-                            <textarea class="form-control"></textarea>
-                            <small class="e-text"></small>
+                            <textarea class="form-control" v-model="form.billing_address"></textarea>
+                            <small class="e-text" v-if="errors.billing_address">{{errors.billing_address[0]}}</small>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label>Currency</label>
-                            <typeahead :items="[]" v-model="name"></typeahead>
-                            <small class="e-text"></small>
+                            <typeahead :items="option.currencies" v-model="form.currency_id"></typeahead>
+                            <small class="e-text" v-if="errors.currency_id">{{errors.currency_id[0]}}</small>
                         </div>
                         <div class="form-group">
                             <label>Shipping Address</label>
-                            <textarea class="form-control"></textarea>
-                            <small class="e-text"></small>
+                            <textarea class="form-control" v-model="form.shipping_address"></textarea>
+                            <small class="e-text" v-if="errors.shipping_address">{{errors.shipping_address[0]}}</small>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="panel-footer">
                 <div class="panel-controls">
-                    <button class="btn">Cancel</button>
-                    <button class="btn btn-primary" v-text="button"></button>
+                    <button class="btn" @click="$router.back()">Cancel</button>
+                    <button class="btn btn-primary" @click="submit" v-text="button"></button>
                 </div>
             </div>
         </div>
@@ -78,6 +78,37 @@
                 this.store = `clients/${this.$route.params.id}`
                 this.method = 'put'
                 this.button = 'Save'
+            }
+            this.fetchData()
+        },
+        computed: {
+            option() {
+                return this.$store.getters.option
+            },
+            form() {
+                return this.$store.getters.form
+            },
+            errors() {
+                return this.$store.getters.errors
+            }
+        },
+        watch: {
+            '$route': 'fetchData'
+        },
+        methods: {
+            fetchData() {
+                this.$store.dispatch('fetchFormById', {
+                    path: this.initalize
+                })
+            },
+            submit() {
+                this.$store.dispatch('storeById', {
+                    form: this.form,
+                    store: this.store,
+                    method: this.method,
+                    redirect: this.redirect,
+                    router: this.$router
+                })
             }
         },
         components: {

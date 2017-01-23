@@ -17,7 +17,7 @@ class CreateClientsTable extends Migration
             $table->increments('id');
             $table->string('person');
             $table->string('company');
-            $table->string('telephone');
+            $table->string('telephone')->nullable();
             $table->string('email');
             $table->text('shipping_address');
             $table->text('billing_address');

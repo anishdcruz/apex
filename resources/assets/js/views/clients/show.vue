@@ -4,7 +4,7 @@
             <div class="panel-heading">
                 <p class="panel-title">{{model.person}} / {{model.company}}</p>
                 <div class="panel-controls">
-                    <router-link to="/clients" class="btn">Back</router-link>
+                    <button @click="$router.back()" class="btn">Back</button>
                     <router-link :to="editLink" class="btn btn-secondary">Edit</router-link>
                     <button class="btn btn-danger">Delete</button>
                 </div>
@@ -38,7 +38,7 @@
                         </p>
                         <p class="profile-item">
                             <i class="fa fa-money"></i>
-                            <span>{{model.currency.name}}</span>
+                            <span>{{currency.name}}</span>
                         </p>
                         <p class="profile-item">
                             <i class="fa fa-clock-o"></i>
@@ -62,6 +62,9 @@
         computed: {
             model() {
                 return this.$store.getters.model
+            },
+            currency() {
+                return this.$store.getters.currency
             },
             editLink() {
                 return `/clients/${this.model.id}/edit`
