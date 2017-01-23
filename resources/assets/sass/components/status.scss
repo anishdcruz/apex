@@ -1,0 +1,28 @@
+.status {
+    // background: #999;
+    display: block;
+    text-align: center;
+    font-size: 9px;
+    text-transform: uppercase;
+    padding: 2px 5px;
+    border-radius: 2px;
+    color: #fff;
+    &-grey {
+        background: $status_grey;
+    }
+    &-light_blue {
+        background: $status_light_blue;
+    }
+    &-blue {
+        background: $status_blue;
+    }
+    &-red {
+        background: $status_red;
+    }
+    &-green {
+        background: $status_green;
+    }
+    &-orange {
+        background: $status_orange;
+    }
+}

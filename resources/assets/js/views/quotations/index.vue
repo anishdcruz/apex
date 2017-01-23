@@ -13,9 +13,9 @@
                     <td>{{props.item.title}}</td>
                     <td>
                         {{props.item.total}}
-                        <small class="">{{props.item.currency.code}}</small>
+                        <small>{{props.item.currency.code}}</small>
                     </td>
-                    <td>{{props.item.status_id}}</td>
+                    <td><status :id="props.item.status_id"></status></td>
                 </tr>
             </template>
         </index>
@@ -23,6 +23,7 @@
 </template>
 <script type="text/javascript">
     import Index from '../../components/Index.vue'
+    import Status from '../../components/status/Quotation.vue'
     export default {
         name: 'QuotationIndex',
         data() {
@@ -66,6 +67,7 @@
             }
         },
         components: {
+            Status,
             Index
         },
     }
