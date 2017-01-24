@@ -95,7 +95,7 @@
 
                 if(found) {
                     var index = this.list.indexOf(found)
-
+                    // TODO: uncheck item
                     if (index > -1) {
                         this.list.splice(index, 1);
                     }

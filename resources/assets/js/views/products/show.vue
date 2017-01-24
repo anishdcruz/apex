@@ -5,8 +5,10 @@
                 <p class="panel-title">{{model.item_code}}</p>
                 <div class="panel-controls">
                     <button @click="$router.back()" class="btn">Back</button>
-                    <router-link :to="editLink" class="btn btn-secondary">Edit</router-link>
-                    <button class="btn btn-danger">Delete</button>
+                    <router-link :to="editLink" class="btn">Edit</router-link>
+                    <button class="btn btn-danger">
+                        <i class="fa fa-trash-o"></i>
+                    </button>
                 </div>
             </div>
             <div class="panel-body">

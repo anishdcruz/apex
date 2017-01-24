@@ -19,6 +19,11 @@ const router = new VueRouter({
         { path: '/quotations/create', component: require('../views/quotations/form.vue')},
         { path: '/quotations/:id/edit', component: require('../views/quotations/form.vue'), meta: {mode: 'edit'}},
         { path: '/quotations/:id', component: require('../views/quotations/show.vue')},
+
+        { path: '/sales-orders', component: require('../views/sales-orders/index.vue')},
+        { path: '/sales-orders/create', component: require('../views/sales-orders/form.vue')},
+        { path: '/sales-orders/:id/edit', component: require('../views/sales-orders/form.vue'), meta: {mode: 'edit'}},
+        { path: '/sales-orders/:id', component: require('../views/sales-orders/show.vue')},
     ]
 })
 

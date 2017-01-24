@@ -43,9 +43,14 @@
                                 <small class="e-text" v-if="errors.date">{{errors.date[0]}}</small>
                             </div>
                             <div class="col-sm-6">
-                                <label>Expiry Date</label>
-                                <input type="date" class="form-control" v-model="form.expiry_date">
-                                <small class="e-text" v-if="errors.expiry_date">{{errors.expiry_date[0]}}</small>
+                                <label>
+                                    Customer PO
+                                    <small>
+                                        Optional
+                                    </small>
+                                </label>
+                                <input type="text" class="form-control" v-model="form.customer_po">
+                                <small class="e-text" v-if="errors.customer_po">{{errors.customer_po[0]}}</small>
                             </div>
                         </div>
                     </div>
@@ -169,19 +174,19 @@
     export default {
         data() {
             return {
-                redirect: '/quotations',
-                title: 'Create Quotation',
-                initalize: 'quotations/create',
-                store: 'quotations',
+                redirect: '/sales-orders',
+                title: 'Create Sales Order',
+                initalize: 'sales_orders/create',
+                store: 'sales_orders',
                 method: 'post',
                 button: 'Create'
             }
         },
         created() {
             if(this.$route.meta.mode === 'edit') {
-                this.title = 'Edit Quotation'
-                this.initalize = `quotations/${this.$route.params.id}/edit`
-                this.store = `quotations/${this.$route.params.id}`
+                this.title = 'Edit Sales Order'
+                this.initalize = `sales_orders/${this.$route.params.id}/edit`
+                this.store = `sales_orders/${this.$route.params.id}`
                 this.method = 'put'
                 this.button = 'Save'
             }

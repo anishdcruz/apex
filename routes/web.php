@@ -7,8 +7,12 @@ Route::get('/', function () {
 Route::group(['prefix' => 'api/'], function() {
     // Sales
     Route::resource('clients', 'ClientController');
+
     Route::get('quotations/{quotation}/pdf', 'QuotationController@pdf');
     Route::resource('quotations', 'QuotationController');
+
+    Route::get('sales_orders/{sales_order}/pdf', 'SalesOrderController@pdf');
+    Route::resource('sales_orders', 'SalesOrderController');
 
     // Inventory
     Route::get('products/search', 'ProductController@search');

@@ -10,10 +10,10 @@
                         <button @click="$router.back()" class="btn">Back</button>
                     </div>
                     <div class="btn-group">
-                        <a target="_blank" :href="'/api/quotations/' + model.id + '/pdf'" class="btn">
+                        <a target="_blank" :href="'/api/sales_orders/' + model.id + '/pdf'" class="btn">
                             <i class="fa fa-file-pdf-o"></i>
                         </a>
-                        <a target="_blank" :href="'/api/quotations/' + model.id + '/pdf?opt=download'" class="btn">
+                        <a target="_blank" :href="'/api/sales_orders/' + model.id + '/pdf?opt=download'" class="btn">
                             <i class="fa fa-download"></i>
                         </a>
                         <router-link :to="editLink" class="btn">Edit</router-link>
@@ -31,8 +31,16 @@
                                 <strong>Title: </strong>
                                 <span>{{model.title}}</span>
                             </p>
-                            <strong>To:</strong><br>
-                            <pre>{{client.person}},<br>{{client.company}},<br>{{client.billing_address}}</pre>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <strong>Bill To:</strong><br>
+                                    <pre>{{client.person}},<br>{{client.company}},<br>{{client.billing_address}}</pre>
+                                </div>
+                                <div class="col-sm-6">
+                                    <strong>Ship To:</strong><br>
+                                    <pre>{{client.person}},<br>{{client.company}},<br>{{client.shipping_address}}</pre>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-sm-3 col-sm-offset-1">
                             <table class="table-summary">
@@ -45,9 +53,9 @@
                                         <td>Date:</td>
                                         <td>{{model.date}}</td>
                                     </tr>
-                                    <tr>
-                                        <td>Expiry Date:</td>
-                                        <td>{{model.expiry_date}}</td>
+                                    <tr v-if="model.customer_po">
+                                        <td>Customer PO:</td>
+                                        <td>{{model.customer_po}}</td>
                                     </tr>
                                     <tr>
                                         <td>Currency:</td>
@@ -116,9 +124,9 @@
     </div>
 </template>
 <script type="text/javascript">
-    import Status from '../../components/status/Quotation.vue'
+    import Status from '../../components/status/SalesOrder.vue'
     export default {
-        name: 'QuotationShow',
+        name: 'SalesOrderShow',
         components: {
             Status
         },
@@ -139,13 +147,13 @@
                 return this.$store.getters.client
             },
             editLink() {
-                return `/quotations/${this.model.id}/edit`
+                return `/sales-orders/${this.model.id}/edit`
             }
         },
         methods: {
             fetchData() {
                 this.$store.dispatch('fetchById', {
-                    path: `quotations/${this.$route.params.id}`
+                    path: `sales_orders/${this.$route.params.id}`
                 })
             }
         }

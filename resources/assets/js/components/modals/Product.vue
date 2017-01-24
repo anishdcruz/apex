@@ -106,6 +106,7 @@
                 })
 
                 if(found) {
+                    // TODO: uncheck item
                     var index = this.list.indexOf(found)
 
                     if (index > -1) {

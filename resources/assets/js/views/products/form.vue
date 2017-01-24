@@ -11,7 +11,6 @@
                             <label>
                                 Item Code
                                 <small>
-                                    <i class="info">*</i>
                                     Auto Generated
                                 </small>
                             </label>

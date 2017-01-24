@@ -2,13 +2,13 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory;
-use App\Quotation\{
+use App\SalesOrder\{
     Main,
     Item,
     Term
 };
 
-class QuotationsTableSeeder extends Seeder
+class SalesOrdersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -24,12 +24,13 @@ class QuotationsTableSeeder extends Seeder
         Term::truncate();
 
         foreach(range(1, 25) as $i) {
-            $quotation = Main::create([
+            $sales_order = Main::create([
                 'client_id' => $faker->numberBetween(1, 25),
                 'title' => $faker->sentence,
-                'number' => 'Q-'.$faker->numberBetween(10000, 90000),
+                'number' => 'SO-'.$faker->numberBetween(10000, 90000),
                 'date' => '2016-'.mt_rand(1, 12).'-'.mt_rand(1, 28),
-                'expiry_date' => '2016-'.mt_rand(1, 12).'-'.mt_rand(1, 28),
+                'our_ref' => $faker->numberBetween(1, 25),
+                'customer_po' => 'LPO'.$faker->numberBetween(10000, 100000),
                 'discount' => $faker->numberBetween(0, 1000),
                 'sub_total' => $faker->numberBetween(100, 1000),
                 'total' => $faker->numberBetween(100, 1000),
@@ -39,7 +40,7 @@ class QuotationsTableSeeder extends Seeder
 
             foreach(range(1, mt_rand(2, 5)) as $i) {
                 Item::create([
-                    'quotation_id' => $quotation->id,
+                    'sales_order_id' => $sales_order->id,
                     'item_code' => 'A-'.$faker->numberBetween(10000, 90000),
                     'description' => $faker->sentence,
                     'unit_price' => $faker->numberBetween(100, 1500),
@@ -49,7 +50,7 @@ class QuotationsTableSeeder extends Seeder
 
             foreach(range(1, mt_rand(2, 4)) as $i) {
                 Term::create([
-                    'quotation_id' => $quotation->id,
+                    'sales_order_id' => $sales_order->id,
                     'description' => $faker->sentence
                 ]);
             }

@@ -122,6 +122,14 @@
             width: 30%;
             float: left;
         }
+        .sub-row {
+            background: pink;
+        }
+
+        .col-half {
+            width: 50%;
+            float: left;
+        }
         .summary tbody tr td {
             font-weight: bold;
             padding: 0 0 4px 0;
