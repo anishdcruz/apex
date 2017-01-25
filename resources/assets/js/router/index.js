@@ -24,6 +24,15 @@ const router = new VueRouter({
         { path: '/sales-orders/create', component: require('../views/sales-orders/form.vue')},
         { path: '/sales-orders/:id/edit', component: require('../views/sales-orders/form.vue'), meta: {mode: 'edit'}},
         { path: '/sales-orders/:id', component: require('../views/sales-orders/show.vue')},
+
+        { path: '/invoices', component: require('../views/invoices/index.vue')},
+        { path: '/invoices/create', component: require('../views/invoices/form.vue')},
+        { path: '/invoices/:id/edit', component: require('../views/invoices/form.vue'), meta: {mode: 'edit'}},
+        { path: '/invoices/:id', component: require('../views/invoices/show.vue')},
+
+        { path: '/received-payments', component: require('../views/received-payments/index.vue')},
+        { path: '/received-payments/create', component: require('../views/received-payments/form.vue')},
+        { path: '/received-payments/:id', component: require('../views/received-payments/show.vue')},
     ]
 })
 

@@ -50,6 +50,7 @@
         }
         .terms {
             padding-top: 15px;
+            width: 70%;
         }
         .terms ul {
             padding-left: 15px;

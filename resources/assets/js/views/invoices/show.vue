@@ -3,7 +3,7 @@
         <div class="panel">
             <div class="panel-heading">
                 <p class="panel-title">
-                    <span>Quotation</span>
+                    <span>Invoice</span>
                     <status :id="model.status_id" class="status-lg"></status>
                 </p>
                 <div class="panel-controls">
@@ -11,10 +11,10 @@
                         <button @click="$router.back()" class="btn">Back</button>
                     </div>
                     <div class="btn-group">
-                        <a target="_blank" :href="'/api/quotations/' + model.id + '/pdf'" class="btn">
+                        <a target="_blank" :href="'/api/invoices/' + model.id + '/pdf'" class="btn">
                             <i class="fa fa-file-pdf-o"></i>
                         </a>
-                        <a target="_blank" :href="'/api/quotations/' + model.id + '/pdf?opt=download'" class="btn">
+                        <a target="_blank" :href="'/api/invoices/' + model.id + '/pdf?opt=download'" class="btn">
                             <i class="fa fa-download"></i>
                         </a>
                         <router-link :to="editLink" class="btn">Edit</router-link>
@@ -47,8 +47,12 @@
                                         <td>{{model.date}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Expiry Date:</td>
-                                        <td>{{model.expiry_date}}</td>
+                                        <td>Due Date:</td>
+                                        <td>{{model.due_date}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Reference:</td>
+                                        <td>{{model.reference}}</td>
                                     </tr>
                                     <tr>
                                         <td>Currency:</td>
@@ -117,9 +121,9 @@
     </div>
 </template>
 <script type="text/javascript">
-    import Status from '../../components/status/Quotation.vue'
+    import Status from '../../components/status/Invoice.vue'
     export default {
-        name: 'QuotationShow',
+        name: 'InvoiceShow',
         components: {
             Status
         },
@@ -140,13 +144,13 @@
                 return this.$store.getters.client
             },
             editLink() {
-                return `/quotations/${this.model.id}/edit`
+                return `/invoices/${this.model.id}/edit`
             }
         },
         methods: {
             fetchData() {
                 this.$store.dispatch('fetchById', {
-                    path: `quotations/${this.$route.params.id}`
+                    path: `invoices/${this.$route.params.id}`
                 })
             }
         }

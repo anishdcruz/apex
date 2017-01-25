@@ -2,13 +2,13 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory;
-use App\SalesOrder\{
+use App\Invoice\{
     Main,
     Item,
     Term
 };
 
-class SalesOrdersTableSeeder extends Seeder
+class InvoicesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -24,23 +24,24 @@ class SalesOrdersTableSeeder extends Seeder
         Term::truncate();
 
         foreach(range(1, 25) as $i) {
-            $sales_order = Main::create([
+            $invoice = Main::create([
                 'client_id' => $faker->numberBetween(1, 25),
                 'title' => $faker->sentence,
-                'number' => 'SO-'.$faker->numberBetween(10000, 90000),
+                'number' => 'Q-'.$faker->numberBetween(10000, 90000),
                 'date' => '2016-'.mt_rand(1, 12).'-'.mt_rand(1, 28),
-                'our_ref' => $faker->numberBetween(1, 25),
-                'customer_po' => 'LPO'.$faker->numberBetween(10000, 100000),
+                'due_date' => '2016-'.mt_rand(1, 12).'-'.mt_rand(1, 28),
                 'discount' => $faker->numberBetween(0, 1000),
                 'sub_total' => $faker->numberBetween(100, 1000),
                 'total' => $faker->numberBetween(100, 1000),
+                'amount_paid' => $faker->numberBetween(0, 600),
+                'reference' => 'SO'.$faker->numberBetween(10000, 80000),
                 'status_id' => $faker->numberBetween(1, 5),
                 'currency_id' => 1
             ]);
 
             foreach(range(1, mt_rand(2, 5)) as $i) {
                 Item::create([
-                    'sales_order_id' => $sales_order->id,
+                    'invoice_id' => $invoice->id,
                     'item_code' => 'A-'.$faker->numberBetween(10000, 90000),
                     'description' => $faker->sentence,
                     'unit_price' => $faker->numberBetween(100, 1500),
@@ -50,7 +51,7 @@ class SalesOrdersTableSeeder extends Seeder
 
             foreach(range(1, mt_rand(2, 4)) as $i) {
                 Term::create([
-                    'sales_order_id' => $sales_order->id,
+                    'invoice_id' => $invoice->id,
                     'description' => $faker->text
                 ]);
             }

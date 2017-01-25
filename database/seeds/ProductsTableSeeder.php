@@ -19,7 +19,7 @@ class ProductsTableSeeder extends Seeder
 
         foreach(range(1, 150) as $i) {
             Product::create([
-                'item_code' => $faker->numberBetween(10000, 80000),
+                'item_code' => $faker->numberBetween(100000, 800000),
                 'description' => $faker->sentence,
                 'unit_price' => $faker->numberBetween(10, 500),
                 'vendor_ref' => $faker->numberBetween(400000, 900000),

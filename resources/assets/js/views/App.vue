@@ -17,7 +17,7 @@
             <div class="navbar">
                 ok!
             </div>
-            <router-view v-show="notLoading"></router-view>
+            <router-view></router-view>
         </div>
     </div>
 </template>
@@ -32,8 +32,8 @@
                             { title: 'Clients', path: '/clients', icon: 'fa-address-book' },
                             { title: 'Quotation', path: '/quotations', icon: 'fa-file-text-o' },
                             { title: 'Sales Order', path: '/sales-orders', icon: 'fa-file-text-o' },
-                            { title: 'Invoice', path: '/invoice', icon: 'fa-file-text-o' },
-                            { title: 'Payment Received', path: '/payment-received', icon: 'fa-money' }
+                            { title: 'Invoice', path: '/invoices', icon: 'fa-file-text-o' },
+                            { title: 'Received Payment', path: '/received-payments', icon: 'fa-money' }
                         ]
                     },
                     {

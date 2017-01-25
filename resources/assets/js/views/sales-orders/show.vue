@@ -3,6 +3,7 @@
         <div class="panel">
             <div class="panel-heading">
                 <p class="panel-title">
+                    <span>Sales Order</span>
                     <status :id="model.status_id" class="status-lg"></status>
                 </p>
                 <div class="panel-controls">

@@ -1,8 +1,8 @@
 <template>
     <div class="view">
         <index :thead="thead" :resource="resource" :filter="filter">
-            <span slot="title">Sales Order</span>
-            <router-link to="/sales-orders/create" class="btn btn-primary" slot="create">Create Sales Order</router-link>
+            <span slot="title">Invoice</span>
+            <router-link to="/invoices/create" class="btn btn-primary" slot="create">Create Invoice</router-link>
 
             <template scope="props">
                 <tr @click="move(props.item)">
@@ -23,12 +23,12 @@
 </template>
 <script type="text/javascript">
     import Index from '../../components/Index.vue'
-    import Status from '../../components/status/SalesOrder.vue'
+    import Status from '../../components/status/Invoice.vue'
     export default {
-        name: 'SalesOrderIndex',
+        name: 'InvoiceIndex',
         data() {
             return {
-                resource: 'sales-orders',
+                resource: 'invoices',
                 thead: [
                     { title: 'ID', key: 'id', sort: true },
                     { title: 'Date', key: 'date', sort: true },
@@ -40,7 +40,7 @@
                 ],
                 filter: [
                     'id', 'number', 'sub_total', 'total', 'title', 'client_id',
-                    'currency_id', 'date', 'expiry_date', 'status_id', 'our_ref', 'customer_po',
+                    'currency_id', 'date', 'due_date', 'status_id', 'reference', 'amount_paid',
                     'discount', 'created_at',
 
                     // filter relation
@@ -58,11 +58,11 @@
         },
         methods: {
             move(item) {
-                this.$router.push(`/sales-orders/${item.id}`)
+                this.$router.push(`/invoices/${item.id}`)
             },
             fetchData() {
                 this.$store.dispatch('fetchIndex', {
-                    resource: 'sales_orders'
+                    resource: this.resource
                 })
             }
         },

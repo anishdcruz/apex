@@ -102,11 +102,16 @@
                 item.check = true
                 // if exists remove
                 var found = this.list.find(function(x) {
+                    if(item.id === x.id) {
+                        // HACK: uncheck item
+                        x.check = false
+                    }
+
                     return item.id === x.id
                 })
 
                 if(found) {
-                    // TODO: uncheck item
+
                     var index = this.list.indexOf(found)
 
                     if (index > -1) {

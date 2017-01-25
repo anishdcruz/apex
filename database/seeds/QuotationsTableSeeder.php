@@ -50,7 +50,7 @@ class QuotationsTableSeeder extends Seeder
             foreach(range(1, mt_rand(2, 4)) as $i) {
                 Term::create([
                     'quotation_id' => $quotation->id,
-                    'description' => $faker->sentence
+                    'description' => $faker->text
                 ]);
             }
         }

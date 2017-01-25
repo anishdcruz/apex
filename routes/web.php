@@ -14,6 +14,11 @@ Route::group(['prefix' => 'api/'], function() {
     Route::get('sales_orders/{sales_order}/pdf', 'SalesOrderController@pdf');
     Route::resource('sales_orders', 'SalesOrderController');
 
+    Route::get('invoices/{invoice}/pdf', 'InvoiceController@pdf');
+    Route::resource('invoices', 'InvoiceController');
+
+    Route::resource('received_payments', 'ReceivedPaymentController');
+
     // Inventory
     Route::get('products/search', 'ProductController@search');
     Route::resource('products', 'ProductController');
