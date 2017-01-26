@@ -27,7 +27,7 @@ class ReceivedPaymentController extends Controller
     public function show($id)
     {
         $payment = Main::with([
-            'currency', 'client', 'items.invoice'
+            'currency', 'client', 'items.invoice.currency'
             ])
             ->findOrFail($id);
 
