@@ -42,7 +42,8 @@ class CreateCountersTable extends Migration
             [ "key" => "quotation", "prefix" => "QT", "number" => 100000 ],
             [ "key" => "sales_order", "prefix" => "SO", "number" => 100000 ],
             [ "key" => "invoice", "prefix" => "IN", "number" => 100000 ],
-            [ "key" => "payment_received", "prefix" => "PR", "number" => 100000 ]
+            [ "key" => "payment_received", "prefix" => "PR", "number" => 100000 ],
+            [ "key" => "delivery", "prefix" => "DE", "number" => 100000 ]
         ];
 
         foreach($counters as $counter) {

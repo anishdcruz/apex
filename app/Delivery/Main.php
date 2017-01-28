@@ -14,11 +14,11 @@ class Main extends Model
     protected $table = 'deliveries';
 
     protected $fillable = [
-        'client_id', 'date', 'status_id', 'sales_order_id'
+        'client_id', 'date', 'status_id', 'sales_order_id', 'address'
     ];
 
     protected $filterFields = [
-        'id', 'client_id', 'date', 'status_id', 'sales_order_id',
+        'id', 'client_id', 'date', 'status_id', 'sales_order_id', 'address',
         'created_at',
         // filter relation
         'client.id', 'client.person', 'client.company', 'client.email', 'client.telephone',

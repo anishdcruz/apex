@@ -168,7 +168,7 @@
         .sign-line {
             display: block;
             margin-bottom: 25px;
-            border-bottom: 1px dotted #999;
+            border-bottom: 1px solid #999;
             color: #555;
         }
     </style>

@@ -125,6 +125,18 @@ class SalesOrderController extends Controller
             $sales->title = '';
             $sales->reference = $number;
         }
+        if(request()->get('convert') == 'delivery') {
+            $sales->number = counter('delivery');
+            $sales->client_name = "{$sales->client->person} - {$sales->client->company}";
+            $sales->date = date('Y-m-d');
+            $sales->address = $sales->client->shipping_address;
+            $sales->sales_order_id = $sales->id;
+            return response()
+                ->json([
+                    'form' => $sales,
+                    'option' => []
+                ]);
+        }
 
         return response()
             ->json([

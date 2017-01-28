@@ -37,6 +37,48 @@ class DeliveryController extends Controller
             ]);
     }
 
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'client_id' => 'required|integer|exists:clients,id',
+            'sales_order_id' => 'required|integer|exists:sales_orders,id',
+            'date' => 'required|date_format:Y-m-d',
+            'address' => 'required|max:2000',
+            'items' => 'required|array|min:1',
+            'items.*.item_code' => 'required|alpha_dash|max:255',
+            'items.*.description' => 'required|max:5000',
+            'items.*.qty' => 'required|integer|min:1'
+        ]);
+
+        $items = [];
+
+        foreach($request->items as $item) {
+            $items[] = new Item($item);
+        }
+
+        $data = $request->except('items');
+        $data['status_id'] = 1;
+
+        $sales = DB::transaction(function() use ($request, $data, $items)
+        {
+            $sales = new Main($data);
+            $sales->number = counter('delivery');
+            $sales->save();
+
+            $sales->items()->saveMany($items);
+
+            Counter::where('key', 'delivery')
+                ->increment('number');
+
+            return $sales;
+        });
+
+        return response()
+            ->json([
+                'saved' => true
+            ]);
+    }
+
     public function pdf($id, Request $request)
     {
         $data = Main::with([

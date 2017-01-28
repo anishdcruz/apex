@@ -29,6 +29,9 @@
                             <dropdown-link :to="invoiceLink" v-if="model.status_id === 3">
                                 Convert to Invoice
                             </dropdown-link>
+                            <dropdown-link :to="deLink" v-if="model.status_id === 3">
+                                Create Delivery Note
+                            </dropdown-link>
                             <dropdown-link :to="sentLink" v-if="model.status_id === 1">
                                 Mark as Sent
                             </dropdown-link>
@@ -36,7 +39,7 @@
                                 Mark as Open
                             </dropdown-link>
                             <dropdown-link :to="closeLink" v-if="model.status_id === 2 || model.status_id === 3">
-                                Mark as Close
+                                Mark as Closed
                             </dropdown-link>
                             <dropdown-link :to="cloneLink">
                                 Clone
@@ -218,6 +221,9 @@
             },
             cloneLink() {
                 return `/sales-orders/${this.model.id}/clone`
+            },
+            deLink() {
+                return `/sales-orders/${this.model.id}/delivery`
             }
         },
         methods: {

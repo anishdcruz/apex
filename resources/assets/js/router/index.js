@@ -50,6 +50,7 @@ const router = new VueRouter({
             })
         }},
         { path: '/sales-orders/:id/edit', component: require('../views/sales-orders/form.vue'), meta: {mode: 'edit'}},
+        { path: '/sales-orders/:id/delivery', component: require('../views/deliveries/form.vue')},
         { path: '/sales-orders/:id/invoice', component: require('../views/invoices/form.vue'), meta: {mode: 'sales-order'}},
         { path: '/sales-orders/:id', component: require('../views/sales-orders/show.vue')},
 
