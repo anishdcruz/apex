@@ -16,7 +16,6 @@
                         <a target="_blank" :href="'/api/received_payments/' + model.id + '/pdf?opt=download'" class="btn">
                             <i class="fa fa-download"></i>
                         </a>
-                        <router-link :to="editLink" class="btn">Edit</router-link>
                     </div>
                     <button class="btn btn-danger">
                         <i class="fa fa-trash-o"></i>

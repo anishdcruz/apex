@@ -116,6 +116,26 @@ class QuotationController extends Controller
             ])
             ->findOrFail($id);
 
+        if(request()->get('convert') == 'sales-order') {
+            $quotation->number = counter('sales_order');
+            $quotation->date = date('Y-m-d');
+            $quotation->title = '';
+            $quotation->customer_po = '';
+        } else if(request()->get('convert') == 'invoice') {
+            $number = $quotation->number;
+            $quotation->number = counter('invoice');
+            $quotation->date = date('Y-m-d');
+            $quotation->due_date = '';
+            $quotation->title = '';
+            $quotation->reference = $number;
+        } else if(request()->get('convert') == 'clone') {
+            $quotation->number = counter('quotation');
+            $quotation->date = date('Y-m-d');
+            $quotation->expiry_date = '';
+            $quotation->title = '';
+            $quotation->reference = '';
+        }
+
         return response()
             ->json([
                 'form' => $quotation,
@@ -228,5 +248,40 @@ class QuotationController extends Controller
             return $pdf->download($filename);
         }
         return $pdf->inline($filename);
+    }
+
+    public function markAs($id, $type)
+    {
+        switch ($type) {
+            case 'sent':
+                $model = Main::whereStatusId(1)
+                    ->findOrFail($id);
+                $model->status_id = 2;
+                $model->save();
+                break;
+
+            case 'accepted':
+                $model = Main::whereIn('status_id', [2, 4])
+                    ->findOrFail($id);
+                $model->status_id = 3;
+                $model->save();
+                break;
+
+            case 'declined':
+                $model = Main::whereIn('status_id', [2, 3])
+                    ->findOrFail($id);
+                $model->status_id = 4;
+                $model->save();
+                break;
+
+            default:
+                abort(404, 'Unknown Status');
+                break;
+        }
+
+        return response()
+            ->json([
+                'saved' => true
+            ]);
     }
 }

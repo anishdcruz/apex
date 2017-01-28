@@ -162,6 +162,15 @@
         .page {
             padding-top: 30px;
         }
+        .sign {
+            padding-top: 100px;
+        }
+        .sign-line {
+            display: block;
+            margin-bottom: 25px;
+            border-bottom: 1px dotted #999;
+            color: #555;
+        }
     </style>
 </head>
 <body>

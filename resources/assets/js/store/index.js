@@ -18,6 +18,15 @@ const state = {
 }
 
 const actions = {
+    fetchInvoices({commit, state}, payload) {
+        commit(types.LOADING_BEGIN)
+        getByPath(state.route, payload.path, function(data) {
+            commit(types.SET_ITEMS, data)
+            commit(types.LOADING_END)
+        }, function(error) {
+
+        })
+    },
     fetchIndex({commit, state}, payload) {
         commit(types.LOADING_BEGIN)
         commit(types.CLEAN_UP)
@@ -87,6 +96,12 @@ const getters = {
             return state.model.client
         }
         return {}
+    },
+    sales(state) {
+        if(state.model.sales) {
+            return state.model.sales
+        }
+        return {}
     }
 }
 
@@ -111,6 +126,9 @@ const mutations = {
     },
     [types.SET_MODEL] (state, payload) {
         state.model = payload.model
+    },
+    [types.SET_ITEMS] (state, payload) {
+        state.form.items = payload.items
     },
     [types.LOADING_BEGIN] (state) {
         state.loading = true

@@ -192,6 +192,24 @@
                 this.store = `invoices/${this.$route.params.id}`
                 this.method = 'put'
                 this.button = 'Save'
+            } else if(this.$route.meta.mode === 'invoice') {
+                this.title = 'Convert Quotation to Invoice'
+                this.initalize = `quotations/${this.$route.params.id}/edit?convert=invoice`
+                this.store = `invoices`
+                this.method = 'post'
+                this.button = 'Convert to Invoice'
+            } else if(this.$route.meta.mode === 'sales-order') {
+                this.title = 'Convert Sales Order to Invoice'
+                this.initalize = `sales_orders/${this.$route.params.id}/edit?convert=invoice`
+                this.store = `invoices`
+                this.method = 'post'
+                this.button = 'Convert to Invoice'
+            } else if(this.$route.meta.mode === 'clone') {
+                this.title = 'Clone Invoice'
+                this.initalize = `invoices/${this.$route.params.id}/edit?convert=clone`
+                this.store = `invoices`
+                this.method = 'post'
+                this.button = 'Clone'
             }
             this.fetchData()
         },

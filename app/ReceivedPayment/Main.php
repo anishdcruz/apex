@@ -14,8 +14,8 @@ class Main extends Model
     protected $table = 'received_payments';
 
     protected $fillable = [
-        'client_id', 'amount_received', 'payment_date', 'payment_mode',
-        'reference',  'amount_used', 'internal_note', 'currency_id'
+        'client_id', 'payment_date', 'payment_mode',
+        'reference', 'internal_note', 'currency_id'
     ];
 
     protected $filterFields = [
@@ -48,7 +48,7 @@ class Main extends Model
     {
         return [
             'client_id' => '', 'amount_received' => 0, 'payment_date' => date('Y-m-d'),
-            'payment_mode' => 'cheque', 'reference' => '',  'amount_used' => 0,
+            'payment_mode' => 'Cheque', 'reference' => '',  'amount_used' => 0,
             'number' => counter('payment_received'), 'currency_id' => 1,
             'internal_note' => '',
             'items' => []

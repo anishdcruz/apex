@@ -100,7 +100,8 @@ class InvoiceController extends Controller
     public function show($id)
     {
         $invoice = Main::with([
-            'currency', 'client', 'items', 'terms'
+            'currency', 'client', 'items',
+            'terms', 'payments.main.currency'
             ])
             ->findOrFail($id);
 
@@ -116,6 +117,13 @@ class InvoiceController extends Controller
             'items', 'terms'
             ])
             ->findOrFail($id);
+
+        if(request()->get('convert') == 'clone') {
+            $invoice->number = counter('invoice');
+            $invoice->date = date('Y-m-d');
+            $invoice->due_date = '';
+            $invoice->title = '';
+        }
 
         return response()
             ->json([
@@ -230,5 +238,33 @@ class InvoiceController extends Controller
             return $pdf->download($filename);
         }
         return $pdf->inline($filename);
+    }
+
+    public function markAs($id, $type)
+    {
+        switch ($type) {
+            case 'sent':
+                $model = Main::whereStatusId(1)
+                    ->findOrFail($id);
+                $model->status_id = 2;
+                $model->save();
+                break;
+
+            case 'void':
+                $model = Main::where('status_id', '>', 1)
+                    ->findOrFail($id);
+                $model->status_id = 4;
+                $model->save();
+                break;
+
+            default:
+                abort(404, 'Unknown Status');
+                break;
+        }
+
+        return response()
+            ->json([
+                'saved' => true
+            ]);
     }
 }

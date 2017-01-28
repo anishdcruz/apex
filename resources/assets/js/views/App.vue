@@ -41,7 +41,7 @@
                         links: [
                             { title: 'Products', path: '/products', icon: 'fa-laptop' },
                             { title: 'Receive', path: '/receive', icon: 'fa-cubes' },
-                            { title: 'Delivery', path: '/delivery', icon: 'fa-truck' }
+                            { title: 'Delivery Note', path: '/deliveries', icon: 'fa-truck' }
                         ]
                     },
                     {

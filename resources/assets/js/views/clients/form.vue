@@ -42,7 +42,12 @@
                             <small class="e-text" v-if="errors.currency_id">{{errors.currency_id[0]}}</small>
                         </div>
                         <div class="form-group">
-                            <label>Shipping Address</label>
+                            <label>
+                                Shipping Address
+                                <small>
+                                    <a @click.stop="copyBillingAddress">Copy Billing Address</a>
+                                </small>
+                            </label>
                             <textarea class="form-control" v-model="form.shipping_address"></textarea>
                             <small class="e-text" v-if="errors.shipping_address">{{errors.shipping_address[0]}}</small>
                         </div>
@@ -96,6 +101,9 @@
             '$route': 'fetchData'
         },
         methods: {
+            copyBillingAddress() {
+                this.form.shipping_address = this.form.billing_address
+            },
             fetchData() {
                 this.$store.dispatch('fetchFormById', {
                     path: this.initalize

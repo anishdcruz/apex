@@ -189,6 +189,12 @@
                 this.store = `sales_orders/${this.$route.params.id}`
                 this.method = 'put'
                 this.button = 'Save'
+            } else if(this.$route.meta.mode === 'sales-order') {
+                this.title = 'Convert Quotation to Sales Order'
+                this.initalize = `quotations/${this.$route.params.id}/edit?convert=sales-order`
+                this.store = `sales_orders`
+                this.method = 'post'
+                this.button = 'Convert to Sales Order'
             }
             this.fetchData()
         },

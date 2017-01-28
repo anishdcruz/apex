@@ -8,7 +8,12 @@
                 </p>
                 <div class="panel-controls">
                     <div class="btn-group">
-                        <button @click="$router.back()" class="btn">Back</button>
+                        <button @click="$router.back()" class="btn">
+                            <i class="fa fa-arrow-left"></i>
+                        </button>
+                        <router-link :to="editLink" class="btn">
+                            <i class="fa fa-pencil-square-o"></i>
+                        </router-link>
                     </div>
                     <div class="btn-group">
                         <a target="_blank" :href="'/api/quotations/' + model.id + '/pdf'" class="btn">
@@ -17,11 +22,33 @@
                         <a target="_blank" :href="'/api/quotations/' + model.id + '/pdf?opt=download'" class="btn">
                             <i class="fa fa-download"></i>
                         </a>
-                        <router-link :to="editLink" class="btn">Edit</router-link>
+                        <router-link :to="editLink" class="btn">
+                            <i class="fa fa-envelope-o"></i>
+                        </router-link>
+                        <dropdown title="More">
+                            <dropdown-link :to="salesLink" v-if="model.status_id > 1">
+                                Convert to Sales Order
+                            </dropdown-link>
+                            <dropdown-link :to="invoiceLink" v-if="model.status_id > 1">
+                                Convert to Invoice
+                            </dropdown-link>
+                            <dropdown-link :to="sentLink" v-if="model.status_id === 1">
+                                Mark as Sent
+                            </dropdown-link>
+                            <dropdown-link :to="acceptLink" v-if="model.status_id === 2 || model.status_id === 4">
+                                Mark as Accepted
+                            </dropdown-link>
+                            <dropdown-link :to="declineLink" v-if="model.status_id === 2 || model.status_id === 3">
+                                Mark as Declined
+                            </dropdown-link>
+                            <dropdown-link :to="cloneLink">
+                                Clone
+                            </dropdown-link>
+                            <li>
+                                <a href="#">Delete</a>
+                            </li>
+                        </dropdown>
                     </div>
-                    <button class="btn btn-danger">
-                        <i class="fa fa-trash-o"></i>
-                    </button>
                 </div>
             </div>
             <div class="panel-body">
@@ -117,10 +144,14 @@
     </div>
 </template>
 <script type="text/javascript">
+    import Dropdown from '../../components/Dropdown.vue'
+    import DropdownLink from '../../components/DropdownLink.vue'
     import Status from '../../components/status/Quotation.vue'
     export default {
         name: 'QuotationShow',
         components: {
+            DropdownLink,
+            Dropdown,
             Status
         },
         created() {
@@ -141,6 +172,24 @@
             },
             editLink() {
                 return `/quotations/${this.model.id}/edit`
+            },
+            salesLink() {
+                return `/quotations/${this.model.id}/sales-order`
+            },
+            invoiceLink() {
+                return `/quotations/${this.model.id}/invoice`
+            },
+            sentLink() {
+                return `/quotations/${this.model.id}/status/sent`
+            },
+            acceptLink() {
+                return `/quotations/${this.model.id}/status/accepted`
+            },
+            declineLink() {
+                return `/quotations/${this.model.id}/status/declined`
+            },
+            cloneLink() {
+                return `/quotations/${this.model.id}/clone`
             }
         },
         methods: {

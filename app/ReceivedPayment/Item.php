@@ -3,7 +3,7 @@
 namespace App\ReceivedPayment;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Invoice\Main;
+use App\Invoice\Main as Invoice;
 class Item extends Model
 {
     protected $table = 'received_payment_items';
@@ -14,6 +14,11 @@ class Item extends Model
 
     public function invoice()
     {
-        return $this->belongsTo(Main::class);
+        return $this->belongsTo(Invoice::class);
+    }
+
+    public function main()
+    {
+        return $this->belongsTo(Main::class, 'received_payment_id', 'id');
     }
 }

@@ -184,6 +184,12 @@
                 this.store = `quotations/${this.$route.params.id}`
                 this.method = 'put'
                 this.button = 'Save'
+            } else if(this.$route.meta.mode === 'clone') {
+                this.title = 'Clone Quotation'
+                this.initalize = `quotations/${this.$route.params.id}/edit?convert=clone`
+                this.store = `quotations`
+                this.method = 'post'
+                this.button = 'Clone'
             }
             this.fetchData()
         },

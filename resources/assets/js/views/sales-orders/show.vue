@@ -8,20 +8,44 @@
                 </p>
                 <div class="panel-controls">
                     <div class="btn-group">
-                        <button @click="$router.back()" class="btn">Back</button>
+                        <button @click="$router.back()" class="btn">
+                            <i class="fa fa-arrow-left"></i>
+                        </button>
+                        <router-link :to="editLink" class="btn">
+                            <i class="fa fa-pencil-square-o"></i>
+                        </router-link>
                     </div>
                     <div class="btn-group">
-                        <a target="_blank" :href="'/api/sales_orders/' + model.id + '/pdf'" class="btn">
+                        <a target="_blank" :href="'/api/quotations/' + model.id + '/pdf'" class="btn">
                             <i class="fa fa-file-pdf-o"></i>
                         </a>
-                        <a target="_blank" :href="'/api/sales_orders/' + model.id + '/pdf?opt=download'" class="btn">
+                        <a target="_blank" :href="'/api/quotations/' + model.id + '/pdf?opt=download'" class="btn">
                             <i class="fa fa-download"></i>
                         </a>
-                        <router-link :to="editLink" class="btn">Edit</router-link>
+                        <router-link :to="editLink" class="btn">
+                            <i class="fa fa-envelope-o"></i>
+                        </router-link>
+                        <dropdown title="More">
+                            <dropdown-link :to="invoiceLink" v-if="model.status_id === 3">
+                                Convert to Invoice
+                            </dropdown-link>
+                            <dropdown-link :to="sentLink" v-if="model.status_id === 1">
+                                Mark as Sent
+                            </dropdown-link>
+                            <dropdown-link :to="openLink" v-if="model.status_id === 2 || model.status_id === 4">
+                                Mark as Open
+                            </dropdown-link>
+                            <dropdown-link :to="closeLink" v-if="model.status_id === 2 || model.status_id === 3">
+                                Mark as Close
+                            </dropdown-link>
+                            <dropdown-link :to="cloneLink">
+                                Clone
+                            </dropdown-link>
+                            <li>
+                                <a href="#">Delete</a>
+                            </li>
+                        </dropdown>
                     </div>
-                    <button class="btn btn-danger">
-                        <i class="fa fa-trash-o"></i>
-                    </button>
                 </div>
             </div>
             <div class="panel-body">
@@ -122,13 +146,40 @@
                 </div>
             </div>
         </div>
+        <div class="panel">
+            <div class="panel-heading">
+                <p class="panel-title">Delivery Notes</p>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Number</th>
+                            <th>Date</th>
+                            <th>Created At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in model.deliveries">
+                            <td>{{item.number}}</td>
+                            <td>{{item.date}}</td>
+                            <td>{{item.created_at}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </template>
 <script type="text/javascript">
+    import Dropdown from '../../components/Dropdown.vue'
+    import DropdownLink from '../../components/DropdownLink.vue'
     import Status from '../../components/status/SalesOrder.vue'
     export default {
         name: 'SalesOrderShow',
         components: {
+            DropdownLink,
+            Dropdown,
             Status
         },
         created() {
@@ -149,6 +200,24 @@
             },
             editLink() {
                 return `/sales-orders/${this.model.id}/edit`
+            },
+            salesLink() {
+                return `/sales-orders/${this.model.id}/sales-order`
+            },
+            invoiceLink() {
+                return `/sales-orders/${this.model.id}/invoice`
+            },
+            sentLink() {
+                return `/sales-orders/${this.model.id}/status/sent`
+            },
+            openLink() {
+                return `/sales-orders/${this.model.id}/status/open`
+            },
+            closeLink() {
+                return `/sales-orders/${this.model.id}/status/close`
+            },
+            cloneLink() {
+                return `/sales-orders/${this.model.id}/clone`
             }
         },
         methods: {

@@ -4,6 +4,7 @@ namespace App\SalesOrder;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Support\PaginationOrderFilter;
+use App\Delivery\Main as Delivery;
 use App\Currency;
 use App\Client;
 
@@ -47,6 +48,11 @@ class Main extends Model
     public function terms()
     {
         return $this->hasMany(Term::class, 'sales_order_id', 'id');
+    }
+
+    public function deliveries()
+    {
+        return $this->hasMany(Delivery::class, 'sales_order_id', 'id');
     }
 
     public static function initialize()

@@ -6,9 +6,11 @@
 <script>
   export default {
     mounted() {
-      this.$nextTick(function () {
-        this.$parent.$refs.needFocus.focus()
-      })
+      if(this.$parent.$refs.needFocus) {
+        this.$nextTick(function () {
+          this.$parent.$refs.needFocus.focus()
+        })
+      }
 
       document.addEventListener('click', this.onClick, true)
       document.addEventListener("keydown", this.onKey, true)

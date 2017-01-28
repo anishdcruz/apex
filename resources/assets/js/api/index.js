@@ -1,5 +1,15 @@
 import axios from 'axios'
 
+export function setStatus(path, success, fail) {
+    axios.put(`/api/${path}`)
+        .then(function(response) {
+            success(response.data)
+        })
+        .catch(function(error) {
+            fail(error)
+        })
+}
+
 export function getByIndex(route, resource, success, fail) {
     axios.get(`/api/${resource}`, {
         params: params(route)

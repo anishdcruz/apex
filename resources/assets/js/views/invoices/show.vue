@@ -8,7 +8,12 @@
                 </p>
                 <div class="panel-controls">
                     <div class="btn-group">
-                        <button @click="$router.back()" class="btn">Back</button>
+                        <button @click="$router.back()" class="btn">
+                            <i class="fa fa-arrow-left"></i>
+                        </button>
+                        <router-link :to="editLink" class="btn">
+                            <i class="fa fa-pencil-square-o"></i>
+                        </router-link>
                     </div>
                     <div class="btn-group">
                         <a target="_blank" :href="'/api/invoices/' + model.id + '/pdf'" class="btn">
@@ -17,11 +22,24 @@
                         <a target="_blank" :href="'/api/invoices/' + model.id + '/pdf?opt=download'" class="btn">
                             <i class="fa fa-download"></i>
                         </a>
-                        <router-link :to="editLink" class="btn">Edit</router-link>
+                        <router-link :to="editLink" class="btn">
+                            <i class="fa fa-envelope-o"></i>
+                        </router-link>
+                        <dropdown title="More">
+                            <dropdown-link :to="sentLink" v-if="model.status_id === 1">
+                                Mark as Sent
+                            </dropdown-link>
+                            <dropdown-link :to="voidLink" v-if="model.status_id != 3">
+                                Mark as Void
+                            </dropdown-link>
+                            <dropdown-link :to="cloneLink">
+                                Clone
+                            </dropdown-link>
+                            <li>
+                                <a href="#">Delete</a>
+                            </li>
+                        </dropdown>
                     </div>
-                    <button class="btn btn-danger">
-                        <i class="fa fa-trash-o"></i>
-                    </button>
                 </div>
             </div>
             <div class="panel-body">
@@ -118,13 +136,47 @@
                 </div>
             </div>
         </div>
+        <div class="panel">
+            <div class="panel-heading">
+                <p class="panel-title">Received Payments</p>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Payment No.</th>
+                            <th>Applied Amount</th>
+                            <th>Payment Date</th>
+                            <th>Payment Mode</th>
+                            <th>Created At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="payment in model.payments">
+                            <td>{{payment.main.number}}</td>
+                            <td>{{payment.main.payment_date}}</td>
+                            <td>
+                                {{payment.applied_amount}}
+                                <small>{{payment.main.currency.code}}</small>
+                            </td>
+                            <td>{{payment.main.payment_mode}}</td>
+                            <td>{{payment.created_at}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </template>
 <script type="text/javascript">
+    import Dropdown from '../../components/Dropdown.vue'
+    import DropdownLink from '../../components/DropdownLink.vue'
     import Status from '../../components/status/Invoice.vue'
     export default {
         name: 'InvoiceShow',
         components: {
+            DropdownLink,
+            Dropdown,
             Status
         },
         created() {
@@ -145,6 +197,21 @@
             },
             editLink() {
                 return `/invoices/${this.model.id}/edit`
+            },
+            salesLink() {
+                return `/invoices/${this.model.id}/sales-order`
+            },
+            invoiceLink() {
+                return `/invoices/${this.model.id}/invoice`
+            },
+            sentLink() {
+                return `/invoices/${this.model.id}/status/sent`
+            },
+            voidLink() {
+                return `/invoices/${this.model.id}/status/void`
+            },
+            cloneLink() {
+                return `/invoices/${this.model.id}/clone`
             }
         },
         methods: {

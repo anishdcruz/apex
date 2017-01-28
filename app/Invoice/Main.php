@@ -4,6 +4,7 @@ namespace App\Invoice;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Support\PaginationOrderFilter;
+use App\ReceivedPayment\Item as Payment;
 use App\Currency;
 use App\Client;
 
@@ -47,6 +48,11 @@ class Main extends Model
     public function terms()
     {
         return $this->hasMany(Term::class, 'invoice_id', 'id');
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class, 'invoice_id', 'id');
     }
 
     public static function initialize()

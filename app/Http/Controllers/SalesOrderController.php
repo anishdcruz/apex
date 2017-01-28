@@ -99,7 +99,8 @@ class SalesOrderController extends Controller
     public function show($id)
     {
         $model = Main::with([
-            'currency', 'client', 'items', 'terms'
+            'currency', 'client', 'items', 'terms',
+            'deliveries'
             ])
             ->findOrFail($id);
 
@@ -115,6 +116,15 @@ class SalesOrderController extends Controller
             'items', 'terms'
             ])
             ->findOrFail($id);
+
+        if(request()->get('convert') == 'invoice') {
+            $number = $sales->number;
+            $sales->number = counter('invoice');
+            $sales->date = date('Y-m-d');
+            $sales->due_date = '';
+            $sales->title = '';
+            $sales->reference = $number;
+        }
 
         return response()
             ->json([
@@ -227,5 +237,40 @@ class SalesOrderController extends Controller
             return $pdf->download($filename);
         }
         return $pdf->inline($filename);
+    }
+
+    public function markAs($id, $type)
+    {
+        switch ($type) {
+            case 'sent':
+                $model = Main::whereStatusId(1)
+                    ->findOrFail($id);
+                $model->status_id = 2;
+                $model->save();
+                break;
+
+            case 'open':
+                $model = Main::whereIn('status_id', [2, 4])
+                    ->findOrFail($id);
+                $model->status_id = 3;
+                $model->save();
+                break;
+
+            case 'close':
+                $model = Main::whereIn('status_id', [2, 3])
+                    ->findOrFail($id);
+                $model->status_id = 4;
+                $model->save();
+                break;
+
+            default:
+                abort(404, 'Unknown Status');
+                break;
+        }
+
+        return response()
+            ->json([
+                'saved' => true
+            ]);
     }
 }
