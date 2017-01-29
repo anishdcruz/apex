@@ -91,6 +91,8 @@ const router = new VueRouter({
         { path: '/statements', component: require('../views/statements/index.vue')},
         { path: '/statements/create', component: require('../views/statements/form.vue')},
         { path: '/statements/:id', component: require('../views/statements/show.vue')},
+
+        { path: '/settings', component: require('../views/settings/index.vue')}
     ]
 })
 

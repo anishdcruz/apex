@@ -88,9 +88,7 @@ class DeliveryController extends Controller
 
 
         // return view('pdf.delivery', ['model' => $data]);
-        $pdf = PDF::setOption('header-html', base_path('resources/views/static/header.html'))
-            ->setOption('footer-html', base_path('resources/views/static/footer.html'))
-            ->loadView('pdf.delivery', ['model' => $data]);
+        $pdf = PDF::loadView('pdf.delivery', ['model' => $data]);
 
         $filename = "{$data->number}.pdf";
 

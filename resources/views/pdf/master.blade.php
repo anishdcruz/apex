@@ -160,7 +160,7 @@
             display: block;
         }
         .page {
-            padding-top: 30px;
+            padding-top: 20px;
         }
         .sign {
             padding-top: 100px;

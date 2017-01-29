@@ -58,9 +58,7 @@ class ReceivedPaymentController extends Controller
             ->findOrFail($id);
 
 
-        $pdf = PDF::setOption('header-html', base_path('resources/views/static/header.html'))
-            ->setOption('footer-html', base_path('resources/views/static/footer.html'))
-            ->loadView('pdf.received_payment', ['model' => $data]);
+        $pdf = PDF::loadView('pdf.received_payment', ['model' => $data]);
 
         $filename = "{$data->number}.pdf";
 

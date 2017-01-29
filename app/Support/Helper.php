@@ -3,6 +3,12 @@
 use App\Currency;
 use App\Counter;
 use App\Client;
+use App\Support\Settings;
+
+function settings()
+{
+    return new Settings;
+}
 
 function currencies()
 {

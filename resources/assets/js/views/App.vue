@@ -69,6 +69,12 @@
                             { title: 'AMC', path: '/amc', icon: 'fa-handshake-o' }
                         ]
                     },
+                    {
+                        title: 'Settings',
+                        links: [
+                            { title: 'Basic', path: '/settings', icon: 'fa-cogs' }
+                        ]
+                    }
                 ]
             }
         },

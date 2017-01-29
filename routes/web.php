@@ -40,5 +40,5 @@ Route::group(['prefix' => 'api/'], function() {
     Route::get('terms/search', 'TermController@search');
     Route::resource('terms', 'TermController');
 
-    Route::get('static/header', 'StaticController@header');
+    Route::post('settings/document', 'SettingsController@uploadDocument');
 });

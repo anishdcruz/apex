@@ -238,9 +238,7 @@ class QuotationController extends Controller
             ->findOrFail($id);
 
 
-        $pdf = PDF::setOption('header-html', base_path('resources/views/static/header.html'))
-            ->setOption('footer-html', base_path('resources/views/static/footer.html'))
-            ->loadView('pdf.quotation', ['model' => $data]);
+        $pdf = PDF::loadView('pdf.quotation', ['model' => $data]);
 
         $filename = "{$data->number}.pdf";
 
