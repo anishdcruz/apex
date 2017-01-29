@@ -154,7 +154,7 @@
                     <tbody>
                         <tr v-for="payment in model.payments">
                             <td>{{payment.main.number}}</td>
-                            <td>{{payment.main.payment_date}}</td>
+                            <td>{{payment.main.date}}</td>
                             <td>
                                 {{payment.applied_amount}}
                                 <small>{{payment.main.currency.code}}</small>

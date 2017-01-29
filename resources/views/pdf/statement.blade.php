@@ -6,13 +6,17 @@
         &nbsp;
     </div>
     <div class="col-right type">
-        RECEIVED PAYMENT
+        STATEMENT OF ACCOUNT
     </div>
 </div>
 <div class="row">
     <div class="col-left">
-        <strong>Paid By:</strong><br>
-        <pre>{{$model->client->company}},<br>{{$model->client->billing_address}}</pre>
+        <div class="sub-row">
+            <div class="col-half">
+                <strong>To:</strong><br>
+                <pre>{{$model->client->person}},<br>{{$model->client->company}},<br>{{$model->client->billing_address}}</pre>
+            </div>
+        </div>
     </div>
     <div class="col-right">
         <table class="table summary">
@@ -22,22 +26,16 @@
                     <td>{{$model->number}}</td>
                 </tr>
                 <tr>
-                    <td>Date:</td>
-                    <td>{{$model->date}}</td>
+                    <td>From Date:</td>
+                    <td>{{$model->from_date}}</td>
                 </tr>
                 <tr>
-                    <td>Payment Mode:</td>
-                    <td>{{$model->payment_mode}}</td>
+                    <td>To Date:</td>
+                    <td>{{$model->to_date}}</td>
                 </tr>
-                @if($model->reference)
                 <tr>
-                    <td>Reference:</td>
-                    <td>{{$model->reference}}</td>
-                </tr>
-                @endif
-                <tr>
-                    <td>Amount Received:</td>
-                    <td>{{$model->amount_received}}</td>
+                    <td>Opening Balance:</td>
+                    <td>{{$model->opening_balance}}</td>
                 </tr>
                 <tr>
                     <td>Currency:</td>
@@ -50,32 +48,34 @@
 <table class="table items">
     <thead>
         <tr>
-            <tr>
-                <th>Invoice No.</th>
-                <th>Invoice Date</th>
-                <th>Invoice Title</th>
-                <th class="right">Invoice Total</th>
-                <th class="right">Amount Applied</th>
-            </tr>
+            <th class="left">Date</th>
+            <th class="left">Type</th>
+            <th class="left">Number</th>
+            <th class="right">Debits</th>
+            <th class="center">Credits</th>
+            <th class="right">Balance</th>
         </tr>
     </thead>
     <tbody>
         @foreach($model->items as $item)
             <tr>
                 <td class="w-2">
-                    {{$item->invoice->number}}
+                    {{$item->date}}
                 </td>
                 <td class="w-2">
-                    {{$item->invoice->date}}
+                    {{$item->type}}
                 </td>
-                <td class="w-4">
-                    {{$item->invoice->title}}
-                </td>
-                <td class="w-2 right">
-                    {{$item->invoice->total}}
+                <td class="w-2">
+                    {{$item->number}}
                 </td>
                 <td class="w-2 right">
-                    {{$item->applied_amount}}
+                    {{$item->debits}}
+                </td>
+                <td class="w-2 right">
+                    {{$item->credits}}
+                </td>
+                <td class="w-2 right">
+                    {{$item->balance}}
                 </td>
             </tr>
         @endforeach
@@ -84,8 +84,9 @@
                 <tr>
                     <td class="w-2">&nbsp;</td>
                     <td class="w-2">&nbsp;</td>
-                    <td class="w-4">&nbsp;</td>
+                    <td class="w-2">&nbsp;</td>
                     <td class="w-2 right">&nbsp;</td>
+                    <td class="w-2 center">&nbsp;</td>
                     <td class="w-2 right">&nbsp;</td>
                 </tr>
             @endforeach
@@ -93,17 +94,12 @@
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="2"></td>
-            <td colspan="2">Amount Received</td>
-            <td class="right">{{$model->amount_received}}</td>
-        </tr>
-        <tr>
-            <td colspan="2"></td>
+            <td colspan="3"></td>
             <td colspan="2">
-                <strong>Amount Used</strong>
+                <strong>Balance Due</strong>
             </td>
             <td class="right">
-                <strong>{{$model->amount_used}}</strong>
+                <strong>{{$model->total}}</strong>
             </td>
         </tr>
     </tfoot>

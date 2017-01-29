@@ -34,8 +34,8 @@
                         <div class="row form-group">
                             <div class="col-sm-6">
                                 <label>Payment Date</label>
-                                <input type="date" class="form-control" v-model="form.payment_date">
-                                <small class="e-text" v-if="errors.payment_date">{{errors.payment_date[0]}}</small>
+                                <input type="date" class="form-control" v-model="form.date">
+                                <small class="e-text" v-if="errors.date">{{errors.date[0]}}</small>
                             </div>
                             <div class="col-sm-6">
                                 <label>Amount Received</label>

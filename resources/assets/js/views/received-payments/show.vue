@@ -38,7 +38,7 @@
                                     </tr>
                                     <tr>
                                         <td>Date:</td>
-                                        <td>{{model.payment_date}}</td>
+                                        <td>{{model.date}}</td>
                                     </tr>
                                     <tr>
                                         <td>Payment Mode:</td>

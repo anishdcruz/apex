@@ -86,7 +86,11 @@ const router = new VueRouter({
                 next(`/deliveries/${to.params.id}?error=${to.params.type}`)
             })
         }},
-        { path: '/deliveries/:id', component: require('../views/deliveries/show.vue')}
+        { path: '/deliveries/:id', component: require('../views/deliveries/show.vue')},
+
+        { path: '/statements', component: require('../views/statements/index.vue')},
+        { path: '/statements/create', component: require('../views/statements/form.vue')},
+        { path: '/statements/:id', component: require('../views/statements/show.vue')},
     ]
 })
 

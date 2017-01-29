@@ -13,13 +13,15 @@ class Main extends Model
 
     protected $table = 'received_payments';
 
+    protected $type = 'Payment';
+
     protected $fillable = [
-        'client_id', 'payment_date', 'payment_mode',
+        'client_id', 'date', 'payment_mode',
         'reference', 'internal_note', 'currency_id'
     ];
 
     protected $filterFields = [
-        'id', 'amount_received', 'payment_date', 'payment_mode',
+        'id', 'amount_received', 'date', 'payment_mode',
         'reference',  'amount_used', 'number', 'internal_note',
         'created_at',
 
@@ -47,7 +49,7 @@ class Main extends Model
     public static function initialize()
     {
         return [
-            'client_id' => '', 'amount_received' => 0, 'payment_date' => date('Y-m-d'),
+            'client_id' => '', 'amount_received' => 0, 'date' => date('Y-m-d'),
             'payment_mode' => 'Cheque', 'reference' => '',  'amount_used' => 0,
             'number' => counter('payment_received'), 'currency_id' => 1,
             'internal_note' => '',

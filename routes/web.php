@@ -32,6 +32,10 @@ Route::group(['prefix' => 'api/'], function() {
     Route::get('products/search', 'ProductController@search');
     Route::resource('products', 'ProductController');
 
+    // Accounts
+    Route::get('statements/{statement}/pdf', 'StatementController@pdf');
+    Route::resource('statements', 'StatementController');
+
     // Others
     Route::get('terms/search', 'TermController@search');
     Route::resource('terms', 'TermController');

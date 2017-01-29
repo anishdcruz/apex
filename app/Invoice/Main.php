@@ -14,6 +14,8 @@ class Main extends Model
 
     protected $table = 'invoices';
 
+    public $type = 'Invoice';
+
     protected $fillable = [
         'title', 'client_id', 'currency_id', 'date', 'due_date',
         'status_id', 'discount', 'sub_total', 'total', 'amount_paid', 'reference'

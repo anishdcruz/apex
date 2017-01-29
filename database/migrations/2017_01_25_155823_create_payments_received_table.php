@@ -18,7 +18,7 @@ class CreatePaymentsReceivedTable extends Migration
             $table->integer('client_id')->unsigned();
             $table->string('number')->unique();
             $table->double('amount_received');
-            $table->date('payment_date');
+            $table->date('date');
             $table->string('payment_mode');
             $table->string('reference')->nullable();
             $table->double('amount_used');

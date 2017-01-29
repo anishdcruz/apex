@@ -57,7 +57,7 @@
                     {
                         title: 'Accounting',
                         links: [
-                            { title: 'Statement of Account', path: '/statement-of-account', icon: 'fa-file-excel-o' },
+                            { title: 'Statement of Account', path: '/statements', icon: 'fa-file-excel-o' },
                             { title: 'Balance Sheet', path: '/balance-sheet', icon: 'fa-file-text-o' }
                         ]
                     },

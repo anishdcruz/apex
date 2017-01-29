@@ -101,7 +101,7 @@ class ReceivedPaymentController extends Controller
             'client_id' => 'required|integer|exists:clients,id',
             'currency_id' => 'required|integer|exists:currencies,id',
             'amount_received' => 'required|numeric|min:1',
-            'payment_date' => 'required|date_format:Y-m-d',
+            'date' => 'required|date_format:Y-m-d',
             'payment_mode' => 'required|in:Cheque,Cash,Bank_transfer',
             'reference' => 'required|max:255',
             'internal_note' => 'max:2000',

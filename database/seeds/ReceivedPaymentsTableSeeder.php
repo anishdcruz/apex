@@ -26,7 +26,7 @@ class ReceivedPaymentsTableSeeder extends Seeder
             $payment = Main::create([
                 'client_id' => $faker->numberBetween(1, 25),
                 'number' => 'R-'.$faker->numberBetween(10000, 90000),
-                'payment_date' => '2016-'.mt_rand(1, 12).'-'.mt_rand(1, 28),
+                'date' => '2016-'.mt_rand(1, 12).'-'.mt_rand(1, 28),
                 'amount_used' => $amount,
                 'amount_received' => $amount,
                 'payment_mode' => 'cheque',
