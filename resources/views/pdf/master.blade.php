@@ -10,13 +10,14 @@
         body {
             font-family: sans-serif;
             color: #484746;
-            font-size: 13px;
-            line-height: 1.2em;
+            font-size: 11px;
+            line-height: 1.1em;
         }
         pre {
             color: #484746;
             font-family: sans-serif;
-            font-size: 13px;
+            font-size: 11px;
+            line-height: 1.1em;
             background: transparent;
             border: none;
             padding: 0;
@@ -43,10 +44,17 @@
         .items tbody tr:nth-of-type(odd) {
             background: #fcfcfc;
         }
-        .items tfoot td {
+        .tfoot td {
             padding: 8px;
             background: #f5f4f3;
             border: 1px solid #484746;
+        }
+        .items {
+            page-break-inside:auto;
+        }
+        .items tr    {
+            page-break-inside:avoid;
+            page-break-after:auto;
         }
         .terms {
             padding-top: 15px;
