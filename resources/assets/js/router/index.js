@@ -92,7 +92,12 @@ const router = new VueRouter({
         { path: '/statements/create', component: require('../views/statements/form.vue')},
         { path: '/statements/:id', component: require('../views/statements/show.vue')},
 
-        { path: '/settings', component: require('../views/settings/index.vue')}
+        { path: '/settings', component: require('../views/settings/index.vue')},
+
+        { path: '/vendors', component: require('../views/vendors/index.vue')},
+        { path: '/vendors/create', component: require('../views/vendors/form.vue')},
+        { path: '/vendors/:id/edit', component: require('../views/vendors/form.vue'), meta: {mode: 'edit'}},
+        { path: '/vendors/:id', component: require('../views/vendors/show.vue')},
     ]
 })
 

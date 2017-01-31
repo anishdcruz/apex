@@ -82,21 +82,19 @@
                 </tr>
             @endforeach
         @endif
-    </tbody>
-    <tfoot>
-        <tr>
+        <tr class="tfoot">
             <td colspan="2"></td>
             <td colspan="2">Sub Total</td>
             <td class="right">{{$model->sub_total}}</td>
         </tr>
         @if($model->discount)
-        <tr>
+        <tr class="tfoot">
             <td colspan="2"></td>
             <td colspan="2">Discount</td>
             <td class="right">{{$model->discount}}</td>
         </tr>
         @endif
-        <tr>
+        <tr class="tfoot">
             <td colspan="2"></td>
             <td colspan="2">
                 <strong>Grand Total</strong>
@@ -105,7 +103,7 @@
                 <strong>{{$model->total}}</strong>
             </td>
         </tr>
-    </tfoot>
+    </tbody>
 </table>
 <div class="terms">
     <strong>Terms and Conditions</strong>

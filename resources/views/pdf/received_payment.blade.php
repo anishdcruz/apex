@@ -90,22 +90,15 @@
                 </tr>
             @endforeach
         @endif
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="2"></td>
-            <td colspan="2">Amount Received</td>
-            <td class="right">{{$model->amount_received}}</td>
-        </tr>
-        <tr>
+        <tr class="tfoot">
             <td colspan="2"></td>
             <td colspan="2">
-                <strong>Amount Used</strong>
+                <strong>Amount Received</strong>
             </td>
             <td class="right">
-                <strong>{{$model->amount_used}}</strong>
+                <strong>{{$model->amount_received}}</strong>
             </td>
         </tr>
-    </tfoot>
+    </tbody>
 </table>
 @endsection

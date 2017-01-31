@@ -91,9 +91,7 @@
                 </tr>
             @endforeach
         @endif
-    </tbody>
-    <tfoot>
-        <tr>
+        <tr class="tfoot">
             <td colspan="3"></td>
             <td colspan="2">
                 <strong>Balance Due</strong>
@@ -102,6 +100,6 @@
                 <strong>{{$model->total}}</strong>
             </td>
         </tr>
-    </tfoot>
+    </tbody>
 </table>
 @endsection

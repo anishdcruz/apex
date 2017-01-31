@@ -16,10 +16,10 @@
                         </router-link>
                     </div>
                     <div class="btn-group">
-                        <a target="_blank" :href="'/api/quotations/' + model.id + '/pdf'" class="btn">
+                        <a target="_blank" :href="'/api/sales_orders/' + model.id + '/pdf'" class="btn">
                             <i class="fa fa-file-pdf-o"></i>
                         </a>
-                        <a target="_blank" :href="'/api/quotations/' + model.id + '/pdf?opt=download'" class="btn">
+                        <a target="_blank" :href="'/api/sales_orders/' + model.id + '/pdf?opt=download'" class="btn">
                             <i class="fa fa-download"></i>
                         </a>
                         <router-link :to="editLink" class="btn">

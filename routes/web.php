@@ -28,6 +28,9 @@ Route::group(['prefix' => 'api/'], function() {
     Route::get('deliveries/{delivery}/pdf', 'DeliveryController@pdf');
     Route::resource('deliveries', 'DeliveryController');
 
+    // Purchase
+    Route::resource('vendors', 'VendorController');
+
     // Inventory
     Route::get('products/search', 'ProductController@search');
     Route::resource('products', 'ProductController');
