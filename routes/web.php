@@ -1,10 +1,12 @@
 <?php
 
-Route::get('/', function () {
-    return view('app');
-});
+Route::get('/', 'AppController@index');
 
-Route::group(['prefix' => 'api/'], function() {
+Route::post('login', 'AppController@login')
+    ->middleware('guest');
+Route::get('logout', 'AppController@logout')
+    ->middleware('auth');
+Route::group(['prefix' => 'api/', 'middleware' => ['auth', 'api']], function() {
     // Sales
     Route::resource('clients', 'ClientController');
 

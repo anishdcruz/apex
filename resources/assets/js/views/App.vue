@@ -22,7 +22,21 @@
     </div>
 </template>
 <script type="text/javascript">
+    import axios from 'axios'
     export default {
+        beforeMount() {
+            // Add a response interceptor
+            axios.interceptors.response.use(function (response) {
+                // Do something with response data
+                return response;
+              }, function (error) {
+                // Do something with response error
+                if(error.response.status === 401 || error.response.status === 500) {
+                    return window.location = '/'
+                }
+                return Promise.reject(error);
+              });
+        },
         data() {
             return {
                 groups: [

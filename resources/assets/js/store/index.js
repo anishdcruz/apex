@@ -63,7 +63,6 @@ const actions = {
             commit(types.PROCESS_END)
             payload.router.push(payload.redirect)
         }, function(error) {
-            console.log(error.status)
             if(error.status === 422) {
                 commit(types.SET_FORM_ERROR, error)
             }
