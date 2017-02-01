@@ -5,7 +5,7 @@
     <div class="col-left title">
         &nbsp;
     </div>
-    <div class="col-right type">
+    <div class="col-right type" {!! formatType('PRE') !!}>
         RECEIVED PAYMENT
     </div>
 </div>
@@ -23,7 +23,7 @@
                 </tr>
                 <tr>
                     <td>Date:</td>
-                    <td>{{$model->date}}</td>
+                    <td>{{formatDate($model->date)}}</td>
                 </tr>
                 <tr>
                     <td>Payment Mode:</td>
@@ -37,7 +37,7 @@
                 @endif
                 <tr>
                     <td>Amount Received:</td>
-                    <td>{{$model->amount_received}}</td>
+                    <td>{{formatMoney($model->amount_received, $model->currency)}}</td>
                 </tr>
                 <tr>
                     <td>Currency:</td>
@@ -66,16 +66,16 @@
                     {{$item->invoice->number}}
                 </td>
                 <td class="w-2">
-                    {{$item->invoice->date}}
+                    {{formatDate($item->invoice->date)}}
                 </td>
                 <td class="w-4">
                     {{$item->invoice->title}}
                 </td>
                 <td class="w-2 right">
-                    {{$item->invoice->total}}
+                    {{formatMoney($item->invoice->total, $item->invoice->currency, true)}}
                 </td>
                 <td class="w-2 right">
-                    {{$item->applied_amount}}
+                    {{formatMoney($item->applied_amount, $model->currency, true)}}
                 </td>
             </tr>
         @endforeach
@@ -96,7 +96,7 @@
                 <strong>Amount Received</strong>
             </td>
             <td class="right">
-                <strong>{{$model->amount_received}}</strong>
+                <strong>{{formatMoney($model->amount_received, $model->currency, true)}}</strong>
             </td>
         </tr>
     </tbody>

@@ -5,6 +5,7 @@ import App from './views/App.vue'
 
 import store from './store'
 import router from './router'
+import filers from './helpers/filter'
 
 sync(store, router)
 

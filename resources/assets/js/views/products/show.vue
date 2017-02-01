@@ -21,8 +21,7 @@
                         <div class="show-item">
                             <label>Unit Price</label>
                             <p>
-                                <span v-text="model.unit_price"></span>
-                                <small v-text="currency.code"></small>
+                                {{model.unit_price | formatMoney(currency, true)}}
                             </p>
                         </div>
                         <div class="show-item">
@@ -44,8 +43,7 @@
                         <div class="show-item">
                             <label>Vendor Price</label>
                             <p>
-                                <span v-text="model.vendor_price"></span>
-                                <small v-text="currency.code"></small>
+                                {{model.vendor_price | formatMoney(currency, true)}}
                             </p>
                         </div>
                     </div>

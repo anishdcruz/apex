@@ -5,7 +5,7 @@
     <div class="col-left title">
         {{$model->title}}
     </div>
-    <div class="col-right type">
+    <div class="col-right type" {!! formatType('QUO') !!}>
         QUOTATION
     </div>
 </div>
@@ -23,11 +23,11 @@
                 </tr>
                 <tr>
                     <td>Date:</td>
-                    <td>{{$model->date}}</td>
+                    <td>{{formatDate($model->date)}}</td>
                 </tr>
                 <tr>
                     <td>Expiry Date:</td>
-                    <td>{{$model->expiry_date}}</td>
+                    <td>{{formatDate($model->expiry_date)}}</td>
                 </tr>
                 <tr>
                     <td>Currency:</td>
@@ -57,13 +57,13 @@
                     <pre>{{$item->description}}</pre>
                 </td>
                 <td class="w-2 right">
-                    {{$item->unit_price}}
+                    {{formatMoney($item->unit_price, $model->currency)}}
                 </td>
                 <td class="w-1 center">
                     {{$item->qty}}
                 </td>
                 <td class="w-2 right">
-                    {{$item->qty * $item->unit_price}}
+                    {{formatMoney($item->qty * $item->unit_price, $model->currency)}}
                 </td>
             </tr>
         @endforeach
@@ -81,13 +81,13 @@
         <tr class="tfoot">
             <td colspan="2"></td>
             <td colspan="2">Sub Total</td>
-            <td class="right">{{$model->sub_total}}</td>
+            <td class="right">{{formatMoney($model->sub_total, $model->currency, true)}}</td>
         </tr>
         @if($model->discount)
         <tr class="tfoot">
             <td colspan="2"></td>
             <td colspan="2">Discount</td>
-            <td class="right">{{$model->discount}}</td>
+            <td class="right">{{formatMoney($model->discount, $model->currency, true)}}</td>
         </tr>
         @endif
         <tr class="tfoot">
@@ -96,7 +96,7 @@
                 <strong>Grand Total</strong>
             </td>
             <td class="right">
-                <strong>{{$model->total}}</strong>
+                <strong>{{formatMoney($model->total, $model->currency, true)}}</strong>
             </td>
         </tr>
     </tbody>

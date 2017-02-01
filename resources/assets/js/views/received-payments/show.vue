@@ -29,7 +29,7 @@
                             <strong>Paid By:</strong><br>
                             <pre><br>{{client.company}},<br>{{client.billing_address}}</pre>
                         </div>
-                        <div class="col-sm-3 col-sm-offset-1">
+                        <div class="col-sm-4">
                             <table class="table-summary">
                                 <tbody>
                                     <tr>
@@ -38,7 +38,7 @@
                                     </tr>
                                     <tr>
                                         <td>Date:</td>
-                                        <td>{{model.date}}</td>
+                                        <td>{{model.date | formatDate}}</td>
                                     </tr>
                                     <tr>
                                         <td>Payment Mode:</td>
@@ -51,8 +51,7 @@
                                     <tr>
                                         <td>Amount Received:</td>
                                         <td>
-                                            {{model.amount_received}}
-                                            <small>{{currency.code}}</small>
+                                            {{model.amount_received | formatMoney(currency)}}
                                         </td>
                                     </tr>
                                     <tr>
@@ -76,15 +75,13 @@
                         <tbody>
                             <tr v-for="item in model.items">
                                 <td>{{item.invoice.number}}</td>
-                                <td>{{item.invoice.date}}</td>
+                                <td>{{item.invoice.date | formatDate}}</td>
                                 <td>{{item.invoice.title}}</td>
                                 <td class="right">
-                                    {{item.invoice.total}}
-                                    <small>{{item.invoice.currency.code}}</small>
+                                    {{item.invoice.total | formatMoney(item.invoice.currency, true)}}
                                 </td>
                                 <td class="right">
-                                    {{item.applied_amount}}
-                                    <small>{{currency.code}}</small>
+                                    {{item.applied_amount | formatMoney(currency, true)}}
                                 </td>
                             </tr>
                         </tbody>
@@ -93,8 +90,7 @@
                                 <td colspan="2"></td>
                                 <td colspan="2">Amount Received</td>
                                 <td>
-                                    {{model.amount_received}}
-                                    <small>{{currency.code}}</small>
+                                    {{model.amount_received | formatMoney(currency, true)}}
                                 </td>
                             </tr>
                             <tr class="right">
@@ -103,8 +99,7 @@
                                     <strong>Amount Used</strong>
                                 </td>
                                 <td>
-                                    <strong>{{model.amount_used}}</strong>
-                                    <small>{{currency.code}}</small>
+                                    <strong>{{model.amount_used | formatMoney(currency, true)}}</strong>
                                 </td>
                             </tr>
                         </tfoot>

@@ -148,15 +148,16 @@
             text-align: right;
         }
         .title {
-            background: #fafafa;
+            background: #f5f4f3;
             padding: 8px;
         }
         .type {
-            background: pink;
+            background: #565656;
             padding: 8px;
             font-weight: bold;
             text-align: center;
             color: #fff;
+            font-size: 15px;
         }
         .logo-wrap {
             width: 40%;

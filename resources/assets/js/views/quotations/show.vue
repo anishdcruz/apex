@@ -71,11 +71,11 @@
                                     </tr>
                                     <tr>
                                         <td>Date:</td>
-                                        <td>{{model.date}}</td>
+                                        <td>{{model.date | formatDate}}</td>
                                     </tr>
                                     <tr>
                                         <td>Expiry Date:</td>
-                                        <td>{{model.expiry_date}}</td>
+                                        <td>{{model.expiry_date | formatDate}}</td>
                                     </tr>
                                     <tr>
                                         <td>Currency:</td>
@@ -99,29 +99,29 @@
                             <tr v-for="item in model.items">
                                 <td>{{item.item_code}}</td>
                                 <td><pre>{{item.description}}</pre></td>
-                                <td>{{item.unit_price}}</td>
-                                <td>{{item.qty}}</td>
-                                <td>{{item.qty * item.unit_price}}</td>
+                                <td class="right">{{item.unit_price | formatMoney(currency)}}</td>
+                                <td class="center">{{item.qty}}</td>
+                                <td class="right">{{(item.qty * item.unit_price) | formatMoney(currency)}}</td>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td colspan="2"></td>
                                 <td colspan="2">Sub Total</td>
-                                <td>{{model.sub_total}}</td>
+                                <td class="right">{{model.sub_total | formatMoney(currency)}}</td>
                             </tr>
                             <tr v-if="model.discount">
                                 <td colspan="2"></td>
                                 <td colspan="2">Discount</td>
-                                <td>{{model.discount}}</td>
+                                <td class="right">{{model.discount | formatMoney(currency)}}</td>
                             </tr>
                             <tr>
                                 <td colspan="2"></td>
                                 <td colspan="2">
                                     <strong>Grand Total</strong>
                                 </td>
-                                <td>
-                                    <strong>{{model.total}}</strong>
+                                <td class="right">
+                                    <strong>{{model.total | formatMoney(currency)}}</strong>
                                 </td>
                             </tr>
                         </tfoot>

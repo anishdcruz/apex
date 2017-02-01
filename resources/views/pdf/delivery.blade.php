@@ -25,7 +25,7 @@
                 </tr>
                 <tr>
                     <td>Delivery Date:</td>
-                    <td>{{$model->date}}</td>
+                    <td>{{formatDate($model->date)}}</td>
                 </tr>
                 <tr>
                     <td>Sales Order:</td>

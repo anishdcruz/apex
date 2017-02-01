@@ -13,7 +13,7 @@ class ProductController extends Controller
     {
         return response()
             ->json([
-                'model' => Product::paginationOrderFilter()
+                'model' => Product::with(['currency'])->paginationOrderFilter()
             ]);
     }
 

@@ -31,6 +31,10 @@ Route::group(['prefix' => 'api/'], function() {
     // Purchase
     Route::resource('vendors', 'VendorController');
 
+    // Route::put('quotations/{quotation}/status/{type}', 'QuotationController@markAs');
+    // Route::get('quotations/{quotation}/pdf', 'QuotationController@pdf');
+    Route::resource('purchase_orders', 'PurchaseOrderController');
+
     // Inventory
     Route::get('products/search', 'ProductController@search');
     Route::resource('products', 'ProductController');

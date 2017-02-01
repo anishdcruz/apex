@@ -3,7 +3,7 @@
         <div class="panel">
             <div class="panel-heading">
                 <p class="panel-title">
-                    <span>Invoice</span>
+                    <span>Purchase Order</span>
                     <status :id="model.status_id" class="status-lg"></status>
                 </p>
                 <div class="panel-controls">
@@ -51,7 +51,7 @@
                                 <span>{{model.title}}</span>
                             </p>
                             <strong>To:</strong><br>
-                            <pre>{{client.person}},<br>{{client.company}},<br>{{client.billing_address}}</pre>
+                            <pre>{{vendor.person}},<br>{{vendor.company}},<br>{{vendor.billing_address}}</pre>
                         </div>
                         <div class="col-sm-3 col-sm-offset-1">
                             <table class="table-summary">
@@ -62,11 +62,7 @@
                                     </tr>
                                     <tr>
                                         <td>Date:</td>
-                                        <td>{{model.date | formatDate}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Due Date:</td>
-                                        <td>{{model.due_date | formatDate}}</td>
+                                        <td>{{model.date}}</td>
                                     </tr>
                                     <tr>
                                         <td>Reference:</td>
@@ -94,29 +90,29 @@
                             <tr v-for="item in model.items">
                                 <td>{{item.item_code}}</td>
                                 <td><pre>{{item.description}}</pre></td>
-                                <td class="right">{{item.unit_price | formatMoney(currency)}}</td>
-                                <td class="center">{{item.qty}}</td>
-                                <td class="right">{{(item.qty * item.unit_price) | formatMoney(currency)}}</td>
+                                <td>{{item.unit_price}}</td>
+                                <td>{{item.qty}}</td>
+                                <td>{{item.qty * item.unit_price}}</td>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td colspan="2"></td>
                                 <td colspan="2">Sub Total</td>
-                                <td class="right">{{model.sub_total | formatMoney(currency)}}</td>
+                                <td>{{model.sub_total}}</td>
                             </tr>
                             <tr v-if="model.discount">
                                 <td colspan="2"></td>
                                 <td colspan="2">Discount</td>
-                                <td class="right">{{model.discount | formatMoney(currency)}}</td>
+                                <td>{{model.discount}}</td>
                             </tr>
                             <tr>
                                 <td colspan="2"></td>
                                 <td colspan="2">
                                     <strong>Grand Total</strong>
                                 </td>
-                                <td class="right">
-                                    <strong>{{model.total | formatMoney(currency)}}</strong>
+                                <td>
+                                    <strong>{{model.total}}</strong>
                                 </td>
                             </tr>
                         </tfoot>
@@ -136,36 +132,6 @@
                 </div>
             </div>
         </div>
-        <div class="panel" v-if="payments.length">
-            <div class="panel-heading">
-                <p class="panel-title">Received Payments</p>
-            </div>
-            <div class="panel-body">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Payment No.</th>
-                            <th>Payment Date</th>
-                            <th>Applied Amount</th>
-                            <th>Payment Mode</th>
-                            <th>Created At</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="payment in payments">
-                            <td>{{payment.main.number}}</td>
-                            <td>{{payment.main.date | formatDate}}</td>
-                            <td>
-                                {{payment.applied_amount}}
-                                <small>{{payment.main.currency.code}}</small>
-                            </td>
-                            <td>{{payment.main.payment_mode}}</td>
-                            <td>{{payment.created_at}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
     </div>
 </template>
 <script type="text/javascript">
@@ -173,7 +139,7 @@
     import DropdownLink from '../../components/DropdownLink.vue'
     import Status from '../../components/status/Invoice.vue'
     export default {
-        name: 'InvoiceShow',
+        name: 'PurchaseOrderShow',
         components: {
             DropdownLink,
             Dropdown,
@@ -192,11 +158,8 @@
             currency() {
                 return this.$store.getters.currency
             },
-            client() {
-                return this.$store.getters.client
-            },
-            payments() {
-                return this.$store.getters.payments
+            vendor() {
+                return this.$store.getters.vendor
             },
             editLink() {
                 return `/invoices/${this.model.id}/edit`
@@ -220,7 +183,7 @@
         methods: {
             fetchData() {
                 this.$store.dispatch('fetchById', {
-                    path: `invoices/${this.$route.params.id}`
+                    path: `purchase_orders/${this.$route.params.id}`
                 })
             }
         }

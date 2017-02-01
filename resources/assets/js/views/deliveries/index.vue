@@ -5,7 +5,7 @@
             <template scope="props">
                 <tr @click="move(props.item)">
                     <td>{{props.item.id}}</td>
-                    <td>{{props.item.date}}</td>
+                    <td>{{props.item.date | formatDate}}</td>
                     <td>{{props.item.number}}</td>
                     <td>{{props.item.client.person}}</td>
                     <td>{{props.item.sales.number}}</td>

@@ -50,7 +50,7 @@
                                     </tr>
                                     <tr>
                                         <td>Delivery Date:</td>
-                                        <td>{{model.date}}</td>
+                                        <td>{{model.date | formatDate}}</td>
                                     </tr>
                                     <tr>
                                         <td>Sales Order:</td>

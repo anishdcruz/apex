@@ -102,6 +102,24 @@ const getters = {
             return state.model.sales
         }
         return {}
+    },
+    deliveries(state) {
+        if(state.model.deliveries) {
+            return state.model.deliveries
+        }
+        return {}
+    },
+    payments(state) {
+        if(state.model.payments) {
+            return state.model.payments
+        }
+        return {}
+    },
+    vendor(state) {
+        if(state.model.vendor) {
+            return state.model.vendor
+        }
+        return {}
     }
 }
 

@@ -9,10 +9,9 @@
                     <td>{{props.item.id}}</td>
                     <td>{{props.item.item_code}}</td>
                     <td>{{props.item.description}}</td>
-                    <td>{{props.item.unit_price}}</td>
+                    <td>{{props.item.unit_price | formatMoney(props.item.currency, true)}}</td>
                     <td>{{props.item.vendor_ref}}</td>
-                    <td>{{props.item.vendor_price}}</td>
-                    <td>{{props.item.created_at}}</td>
+                    <td>{{props.item.vendor_price | formatMoney(props.item.currency, true)}}</td>
                 </tr>
             </template>
         </index>
@@ -31,8 +30,7 @@
                     { title: 'Description', key: 'description', sort: false },
                     { title: 'Unit Price', key: 'unit_price', sort: true },
                     { title: 'Vendor Ref', key: 'vendor_ref', sort: true },
-                    { title: 'Vendor Price', key: 'vendor_price', sort: true },
-                    { title: 'Created At', key: 'created_at', sort: true }
+                    { title: 'Vendor Price', key: 'vendor_price', sort: true }
                 ],
                 filter: [
                     'id', 'description', 'unit_price', 'vendor_price',
