@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
+use File;
+use Response;
 
 class AppController extends Controller
 {
@@ -45,5 +47,20 @@ class AppController extends Controller
         Session::regenerate();
 
         return redirect('/');
+    }
+
+    public function image($filename)
+    {
+        $path = storage_path() . '/app/images/' . $filename;
+
+        if(!File::exists($path)) abort(404);
+
+        $file = File::get($path);
+        $type = File::mimeType($path);
+
+        $response = Response::make($file, 200);
+        $response->header("Content-Type", $type);
+
+        return $response;
     }
 }

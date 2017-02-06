@@ -101,6 +101,10 @@ const router = new VueRouter({
 
         { path: '/purchase-orders', component: require('../views/purchase-orders/index.vue')},
         { path: '/purchase-orders/:id', component: require('../views/purchase-orders/show.vue')},
+
+        { path: '/expenses', component: require('../views/expenses/index.vue')},
+        { path: '/expenses/create', component: require('../views/expenses/form.vue')},
+        { path: '/expenses/:id', component: require('../views/expenses/show.vue')},
     ]
 })
 

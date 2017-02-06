@@ -5,6 +5,7 @@ use App\Counter;
 use App\Client;
 use App\Support\Settings;
 use Carbon\Carbon;
+use App\Vendor;
 
 function settings()
 {
@@ -21,6 +22,13 @@ function currencies()
 function clients()
 {
     return Client::select('id', 'currency_id', DB::raw('concat(person, " - " ,company) as text'))
+        ->orderBy('person')->get()
+        ->toArray();
+}
+
+function vendors()
+{
+    return Vendor::select('id', 'currency_id', DB::raw('concat(person, " - " ,company) as text'))
         ->orderBy('person')->get()
         ->toArray();
 }

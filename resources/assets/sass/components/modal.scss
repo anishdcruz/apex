@@ -6,6 +6,7 @@
     top: 0;
     z-index: 12;
     background-color: rgba(0,0,0,0.4);
+    overflow-y: scroll;
     &-heading {
         padding: 10px;
         display: flex;

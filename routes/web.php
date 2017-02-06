@@ -6,6 +6,10 @@ Route::post('login', 'AppController@login')
     ->middleware('guest');
 Route::get('logout', 'AppController@logout')
     ->middleware('auth');
+
+Route::get('images/{filename}', 'AppController@image')
+    ->middleware('auth');
+
 Route::group(['prefix' => 'api/', 'middleware' => ['auth', 'api']], function() {
     // Sales
     Route::resource('clients', 'ClientController');
@@ -36,6 +40,7 @@ Route::group(['prefix' => 'api/', 'middleware' => ['auth', 'api']], function() {
     // Route::put('quotations/{quotation}/status/{type}', 'QuotationController@markAs');
     // Route::get('quotations/{quotation}/pdf', 'QuotationController@pdf');
     Route::resource('purchase_orders', 'PurchaseOrderController');
+    Route::resource('expenses', 'ExpenseController');
 
     // Inventory
     Route::get('products/search', 'ProductController@search');
