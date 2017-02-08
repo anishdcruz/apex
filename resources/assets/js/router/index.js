@@ -100,11 +100,16 @@ const router = new VueRouter({
         { path: '/vendors/:id', component: require('../views/vendors/show.vue')},
 
         { path: '/purchase-orders', component: require('../views/purchase-orders/index.vue')},
+        { path: '/purchase-orders/:id/bill', component: require('../views/bills/form.vue'), meta: {mode: 'bill'}},
         { path: '/purchase-orders/:id', component: require('../views/purchase-orders/show.vue')},
 
         { path: '/expenses', component: require('../views/expenses/index.vue')},
         { path: '/expenses/create', component: require('../views/expenses/form.vue')},
         { path: '/expenses/:id', component: require('../views/expenses/show.vue')},
+
+        { path: '/bills', component: require('../views/bills/index.vue')},
+        { path: '/bills/create', component: require('../views/bills/form.vue')},
+        { path: '/bills/:id', component: require('../views/bills/show.vue')},
     ]
 })
 

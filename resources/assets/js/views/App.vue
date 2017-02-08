@@ -64,8 +64,8 @@
                             { title: 'Vendors', path: '/vendors', icon: 'fa-users' },
                             { title: 'Expenses', path: '/expenses', icon: 'fa-credit-card' },
                             { title: 'Purchase Order', path: '/purchase-orders', icon: 'fa-file-text-o' },
-                            { title: 'Bill', path: '/bill', icon: 'fa-file-text' },
-                            { title: 'Payment Made', path: '/payment-made', icon: 'fa-money' }
+                            { title: 'Bills', path: '/bills', icon: 'fa-file-text' },
+                            { title: 'Payment Made', path: '/payments-made', icon: 'fa-money' }
                         ]
                     },
                     {

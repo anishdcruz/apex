@@ -35,8 +35,10 @@ trait PaginationOrderFilter {
         ]);
 
         if($v->fails()) {
-            dd($v->messages());
-            // throw new ValidationException($v->messages());
+            if(env('APP_ENV') == 'local') {
+                return dd($v->messages());
+            }
+            throw new ValidationException($v->messages());
         }
 
         return $query

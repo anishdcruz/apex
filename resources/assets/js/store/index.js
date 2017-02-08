@@ -114,6 +114,12 @@ const getters = {
         }
         return {}
     },
+    purchase(state) {
+        if(state.model.purchase) {
+            return state.model.purchase
+        }
+        return {}
+    },
     vendor(state) {
         if(state.model.vendor) {
             return state.model.vendor

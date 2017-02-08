@@ -17,7 +17,11 @@ class Expense extends Model
 
     protected $filterFields = [
         'id', 'date', 'account', 'amount',
-        'paid_through', 'created_at'
+        'paid_through', 'created_at',
+        // filter relation
+        'vendor.id', 'vendor.person', 'vendor.company', 'vendor.email', 'vendor.telephone',
+        'vendor.billing_address', 'vendor.shipping_address', 'vendor.currency_id',
+        'vendor.created_at'
     ];
 
     public function currency()

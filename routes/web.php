@@ -41,6 +41,7 @@ Route::group(['prefix' => 'api/', 'middleware' => ['auth', 'api']], function() {
     // Route::get('quotations/{quotation}/pdf', 'QuotationController@pdf');
     Route::resource('purchase_orders', 'PurchaseOrderController');
     Route::resource('expenses', 'ExpenseController');
+    Route::resource('bills', 'BillController');
 
     // Inventory
     Route::get('products/search', 'ProductController@search');

@@ -38,4 +38,30 @@ class PurchaseOrderController extends Controller
                 'model' => $po
             ]);
     }
+
+    public function edit($id)
+    {
+        $po = Main::with([
+            'items'
+            ])
+            ->findOrFail($id);
+
+        if(request()->get('convert') == 'bill') {
+            $temp = $po;
+            $po->number = counter('bill');
+            $po->date = '';
+            $po->due_date = '';
+            $po->vendor_invoice_no = '';
+            $po->purchase_order_id = $temp->id;
+        }
+
+        return response()
+            ->json([
+                'form' => $po,
+                'option' => [
+                    'currencies' => currencies(),
+                    'vendors' => vendors()
+                ]
+            ]);
+    }
 }
