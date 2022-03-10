@@ -24,7 +24,6 @@ trait PaginationOrderFilter {
     {
         $request = app()->make('request');
 
-        //dd($query);
         $v = Validator::make($request->all(), [
             'column' => 'required|in:'.implode(',', $this->filterFields),
             'direction' => 'required|in:asc,desc',
