@@ -24,6 +24,7 @@ trait PaginationOrderFilter {
     {
         $request = app()->make('request');
 
+        //dd($query);
         $v = Validator::make($request->all(), [
             'column' => 'required|in:'.implode(',', $this->filterFields),
             'direction' => 'required|in:asc,desc',
@@ -44,7 +45,8 @@ trait PaginationOrderFilter {
         return $query
             ->orderBy($request->column, $request->direction)
             ->where(function($query) use ($request) {
-                if($request->has('search_query_1')) {
+                //
+                if($request->has('search_query_1') && !empty($request->get('search_query_1'))) {
                     if (strpos($request->search_column, ".") !== false) {
                         // filter a relation
                         list($relation, $relationColumn) = explode('.', $request->search_column);
